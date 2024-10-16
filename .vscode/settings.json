@@ -1,0 +1,12 @@
+{
+  // Config Issue: Unknown at rule @tailwindcss(unknownAtRules)
+  "files.associations": {
+    "*.css": "tailwindcss",
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.organizeImports": "always"
+  }
+}
