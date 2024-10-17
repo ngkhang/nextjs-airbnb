@@ -1,0 +1,45 @@
+name: Pull Request Default
+description: Use this template for creating new pull requests
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill out the sections below to properly describe the new pull request.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: |-
+        - Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context.
+        - Refer: #(issue)
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What did you do? (mandatory)
+      placeholder: |-
+        -
+  - type: textarea
+    id: why
+    attributes:
+      label: Why would you do that? (mandatory)
+      placeholder: |-
+        -
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist (if needed)
+      options:
+        - label: Task 1
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshots (if appropriate)
+      description: If applicable, add screenshots to help explain your problem.
+  - type: textarea
+    id: extend-content
+    attributes:
+      label: Additional context
+      description: Add any other context about the pull request here.
+
