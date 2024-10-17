@@ -48,6 +48,7 @@ const Configuration: UserConfig = {
       },
     },
   },
+  ignores: [(commit) => commit.startsWith('Merge')],
 };
 
 export default Configuration;
