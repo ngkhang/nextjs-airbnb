@@ -1,0 +1,15 @@
+{
+  "root": {
+    "metaData": {
+      "title": "Airbnb | Vacation rentals, cabins, beach houses, & more",
+      "description": "Get an Airbnb for every kind of trip → 7 million vacation rentals → 2 million Guest Favorites → 220+ countries and regions worldwide"
+    },
+    "logo": {
+      "src": {
+        "white": "/assets/logo/airbnb.svg",
+        "black": "/assets/logo/airbnb-dark.svg"
+      },
+      "alt": "Airbnb logo"
+    }
+  }
+}
