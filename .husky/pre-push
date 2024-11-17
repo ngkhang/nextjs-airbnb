@@ -1,0 +1,14 @@
+# Get changed files
+CHANGED_FILES=$(git diff --name-only HEAD^)
+
+# Check if there are JS/TS files changed
+if echo "$CHANGED_FILES" | grep -q -E '\.(js|jsx|ts|tsx)$'; then
+  echo "🔍 JS/TS files changed. Running lint..."
+  echo "$CHANGED_FILES" | grep -E '\.(js|jsx|ts|tsx)$' | xargs npx next lint --file || {
+      echo "❌ Lint failed. Please fix the errors before pushing."
+      exit 1
+  }
+  echo "✅ Lint passed!"
+else
+  echo "⏩ No JS/TS files changed. Skipping lint."
+fi
