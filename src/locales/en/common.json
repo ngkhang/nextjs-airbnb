@@ -1,0 +1,18 @@
+{
+  "NotFound": {
+    "metaData": {
+      "title": "404 Page Not Found - Airbnb",
+      "description": ""
+    },
+    "title": "Oops!",
+    "description": "We can't seem to find the page you're looking for.",
+    "banner": {
+      "src": "/assets/images/404Banner.gif",
+      "alt": "Girl has dropped her ice cream."
+    }
+  },
+  "Error": {
+    "title": "Something went wrong!",
+    "description": ""
+  }
+}
