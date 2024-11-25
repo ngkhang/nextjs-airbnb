@@ -66,6 +66,7 @@
   "Footer": {
     "main": [
       {
+        "key": 0,
         "title": "Support",
         "items": [
           { "key": 0, "title": "Help Center", "url": "/" },
@@ -77,6 +78,7 @@
         ]
       },
       {
+        "key": 1,
         "title": "Hosting",
         "items": [
           { "key": 0, "title": "Airbnb your home", "url": "/" },
@@ -90,6 +92,7 @@
         ]
       },
       {
+        "key": 2,
         "title": "Airbnb",
         "items": [
           { "key": 0, "title": "Newsroom", "url": "/" },
@@ -107,7 +110,7 @@
         { "key": 1, "title": "x", "icon": "X" },
         { "key": 2, "title": "Instagram", "icon": "Instagram" }
       ],
-      "copyright": "© 2024 Airbnb, Inc.",
+      "copyright": "2024 Airbnb, Inc.",
       "others": [
         { "key": 0, "title": "Terms" },
         { "key": 1, "title": "Sitemap" },

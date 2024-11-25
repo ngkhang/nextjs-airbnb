@@ -75,7 +75,7 @@ body {
   * {
     @apply border-border;
   }
-  htlm {
+  html {
     @apply h-full;
   }
   body {
@@ -85,6 +85,6 @@ body {
 
 @layer components {
   .container {
-    @apply mx-0 min-h-screen max-w-none;
+    @apply mx-0 max-w-none;
   }
 }
