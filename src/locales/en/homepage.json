@@ -3,6 +3,7 @@
     "title": "Inspiration for future getaways",
     "items": [
       {
+        "key": 0,
         "title": "Popular",
         "navLinks": [
           { "key": 0, "description": "Pet-friendly rentals", "title": "Canmore", "url": "/" },
@@ -32,6 +33,7 @@
         ]
       },
       {
+        "key": 1,
         "title": "Arts & culture",
         "navLinks": [
           { "key": 0, "description": "Condo rentals", "title": "Phoenix", "url": "/" },
@@ -61,6 +63,7 @@
         ]
       },
       {
+        "key": 2,
         "title": "Outdoors",
         "navLinks": [
           { "key": 0, "description": "Pet-friendly rentals", "title": "Lake Martin", "url": "/" },
@@ -90,6 +93,7 @@
         ]
       },
       {
+        "key": 3,
         "title": "Mountains",
         "navLinks": [
           { "key": 0, "description": "House rentals", "title": "Mentone", "url": "/" },
@@ -110,6 +114,7 @@
         ]
       },
       {
+        "key": 4,
         "title": "Beach",
         "navLinks": [
           { "key": 0, "description": "Beachfront rentals", "title": "Dauphin Island", "url": "/" },
@@ -139,6 +144,7 @@
         ]
       },
       {
+        "key": 5,
         "title": "Unique stays",
         "navLinks": [
           { "key": 0, "description": "United States", "title": "Cabins", "url": "/" },
@@ -168,6 +174,7 @@
         ]
       },
       {
+        "key": 6,
         "title": "Categories",
         "navLinks": [
           { "key": 0, "description": "", "title": "Amazing pools", "url": "/" },
@@ -190,6 +197,7 @@
         ]
       },
       {
+        "key": 7,
         "title": "Things to do",
         "navLinks": [
           { "key": 0, "description": "England", "title": "London", "url": "/" },
@@ -219,6 +227,7 @@
         ]
       },
       {
+        "key": 8,
         "title": "Travel tips & inspiration",
         "navLinks": [
           { "key": 0, "description": "Tips and inspiration", "title": "Family travel hub", "url": "/" },
@@ -251,6 +260,7 @@
         ]
       },
       {
+        "key": 9,
         "title": "Airbnb-friendly apartments",
         "navLinks": [
           { "key": 0, "description": "Georgia", "title": "Atlanta Metro", "url": "/" },
