@@ -1,4 +1,4 @@
-import { FaSquareXTwitter, FaSquareFacebook, FaSquareInstagram, FaDongSign } from 'react-icons/fa6';
+import { FaSquareXTwitter, FaSquareFacebook, FaSquareInstagram, FaDongSign, FaStar, FaHeart } from 'react-icons/fa6';
 import { RiGlobalLine } from 'react-icons/ri';
 import Privacy from './Privacy';
 
@@ -9,6 +9,8 @@ const IconsRegistry = {
   Global: RiGlobalLine,
   Vnd: FaDongSign,
   Privacy,
+  Star: FaStar,
+  Heart: FaHeart,
 } as const;
 
 export type IconName = keyof typeof IconsRegistry;

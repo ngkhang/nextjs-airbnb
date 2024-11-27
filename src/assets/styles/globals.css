@@ -73,7 +73,7 @@ body {
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border duration-300 ease-in;
   }
   html {
     @apply h-full;
