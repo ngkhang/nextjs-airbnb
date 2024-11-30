@@ -1,4 +1,107 @@
 {
+  "Header": {
+    "Logo": {
+      "url": "",
+      "alt": ""
+    },
+    "Search": {
+      "Stays": {
+        "Where": {
+          "title": "Where",
+          "description": "Search destinations",
+          "items": {
+            "location": {
+              "title": "Search by location"
+            },
+            "region": {
+              "title": "Search by region",
+              "items": [
+                {
+                  "key": 0,
+                  "title": "I'm flexible",
+                  "image": "/assets/images/map-region/flexible.jpg"
+                },
+                {
+                  "key": 1,
+                  "title": "Europe",
+                  "image": "/assets/images/map-region/europe.jpg"
+                },
+                {
+                  "key": 2,
+                  "title": "South Korea",
+                  "image": "/assets/images/map-region/south-korea.jpg"
+                },
+                {
+                  "key": 3,
+                  "title": "United States",
+                  "image": "/assets/images/map-region/united-states.jpg"
+                },
+                {
+                  "key": 3,
+                  "title": "Thailand",
+                  "image": "/assets/images/map-region/thailand.jpg"
+                },
+                {
+                  "key": 4,
+                  "title": "Australia",
+                  "image": "/assets/images/map-region/australia.jpg"
+                }
+              ]
+            }
+          }
+        },
+        "CheckIn": {
+          "title": "Check in",
+          "description": "Add dates"
+        },
+        "CheckOut": {
+          "title": "Check out",
+          "description": "Add dates"
+        },
+        "Who": {
+          "title": "Who",
+          "description": "Add guests",
+          "items": [
+            {
+              "key": 0,
+              "title": "Adults",
+              "description": "Ages 13 or above"
+            },
+            {
+              "key": 1,
+              "title": "Children",
+              "description": "Ages 2 - 12"
+            },
+            {
+              "key": 2,
+              "title": "Infants",
+              "description": "Under 2"
+            },
+            {
+              "key": 3,
+              "title": "Pets",
+              "description": "Bringing a service animal?"
+            }
+          ]
+        },
+        "Search": {
+          "title": "Search"
+        }
+      }
+    },
+    "Sub": {
+      "Action": {
+        "top": [
+          {
+            "key": 0,
+            "title": "",
+            "url": ""
+          }
+        ]
+      },
+      "bottom": []
+    }
+  },
   "Categories": [
     { "key": 0, "icon": "/assets/icons/icons.png", "title": "Icons" },
     { "key": 1, "icon": "/assets/icons/rooms.jpg", "title": "Rooms" },

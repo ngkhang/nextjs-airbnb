@@ -8,50 +8,72 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { cn, formatCurrency } from '@/lib/utils';
 import fakeDataHome from '@/fakeData/fakeHome.json';
 import Icon from '@/components/icon/Icons';
+import HeaderDefault from '@/components/layout/default/Header';
 
 const { PropertiesData, ExploreData } = fakeDataHome;
+const { homeContent, commonContent } = defaultContent;
+const { Inspiration, Explore } = homeContent;
+const { Categories } = commonContent;
 
-const keysLocal = ['tenViTri', 'tinhThanh', 'quocGia'];
-
-interface LocalKey {
-  [key: string]: string;
-}
-
-const fakeLocal: LocalKey = {
-  tenViTri: 'Quận 1',
-  tinhThanh: 'Hồ Chí Minh',
-  quocGia: 'Việt Nam',
-  hinhAnh: 'https://airbnbnew.cybersoft.edu.vn/images/vt1.jpg',
-};
+const keysLocal = ['tenViTri', 'tinhThanh', 'quocGia'] as const;
 
 const infoHome = [
-  {
-    key: 'khach',
-    title: 'khách',
-  },
-  {
-    key: 'phongNgu',
-    title: 'phòng ngủ',
-  },
-  {
-    key: 'giuong',
-    title: 'giường',
-  },
-  {
-    key: 'phongTam',
-    title: 'phòng tắm',
-  },
+  { key: 'khach', title: 'khách' },
+  { key: 'phongNgu', title: 'phòng ngủ' },
+  { key: 'giuong', title: 'giường' },
+  { key: 'phongTam', title: 'phòng tắm' },
 ];
 
-const { homeContent } = defaultContent;
-const { Inspiration, Explore } = homeContent;
+const locationInfo = (id: number) => ExploreData.filter((item) => item.id === id);
 
 export default function Home() {
   return (
     <div className=''>
       {/* Header section */}
-      <div>
-        <p>Header</p>
+      <div className=''>
+        <div className='container'>
+          <HeaderDefault />
+        </div>
+
+        <Separator className='mb-3 hidden md:block' />
+
+        <section className='shadow-xl md:container'>
+          <Carousel className='col-span-3 w-full px-3' opts={{ duration: 25 }}>
+            <CarouselContent className='mx-2'>
+              {Categories.map((item) => (
+                <CarouselItem
+                  key={item.key}
+                  data-state='active'
+                  className={cn(
+                    'flex basis-auto flex-col items-center border-b-2 border-transparent px-3 py-2 text-[#6A6A6A] opacity-60 hover:opacity-85',
+                    item.key === 0 &&
+                      'opacity-100 data-[state=active]:border-[#222222] data-[state=active]:text-[#222222]'
+                  )}
+                >
+                  <span className='mb-2 size-6'>
+                    <Image src={item.icon} alt={item.title} width={50} height={50} className='w-full' quality={75} />
+                  </span>
+                  <span className='text-xs font-semibold'>{item.title}</span>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+
+            <CarouselPrevious className='ml-4 hidden fill-black shadow-none md:flex' />
+            <CarouselNext className='mr-4 hidden fill-black shadow-none md:flex' />
+          </Carousel>
+
+          {/* <div className='col-span-2 grid grid-flow-col gap-3'>
+            <Button className='flex items-center'>
+              <Icon name='Adjust' />
+              <span>Bộ lọc</span>
+            </Button>
+
+            <Button className='flex items-center space-x-2'>
+              <Label htmlFor='airplane-mode'>Hiển thị tổng trước thuế</Label>
+              <Switch id='airplane-mode' />
+            </Button>
+          </div> */}
+        </section>
       </div>
 
       {/* List properties */}
@@ -81,9 +103,10 @@ export default function Home() {
                 </div>
 
                 <div className='mb-1 flex items-stretch text-sm text-[#6A6A6A]'>
-                  {keysLocal.map((key, index) => (
+                  {keysLocal.map((location, index) => (
                     <div key={index} className='flex items-center'>
-                      <span>{fakeLocal[key]}</span>
+                      {locationInfo(item.maViTri) && <span>{locationInfo(item.maViTri)[0][location]}</span>}
+
                       {keysLocal.length - 1 !== index && (
                         <Separator orientation='vertical' className='mx-1 bg-[#6A6A6A]' />
                       )}
