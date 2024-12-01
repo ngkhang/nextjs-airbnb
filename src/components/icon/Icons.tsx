@@ -12,8 +12,11 @@ import { RiGlobalLine, RiSearchLine } from 'react-icons/ri';
 import { TbAdjustmentsHorizontal } from 'react-icons/tb';
 import { IoPersonCircle } from 'react-icons/io5';
 import { RxMinusCircled, RxPlusCircled } from 'react-icons/rx';
+import { type IconBaseProps } from 'react-icons';
 import Privacy from './Privacy';
 import Airbnb from './Airbnb';
+import BlankAvatar from './BlankAvatar';
+import { cn } from '@/lib/utils';
 
 const IconsRegistry = {
   Facebook: FaSquareFacebook,
@@ -32,20 +35,18 @@ const IconsRegistry = {
   Plus: RxPlusCircled,
   Minus: RxMinusCircled,
   Xmark: FaXmark,
+  BlankAvatar,
 } as const;
 
 export type IconName = keyof typeof IconsRegistry;
 
-interface IconProps {
+interface IconProps extends IconBaseProps {
   name: IconName;
   className?: string;
 }
-const Icon = ({ name, ...props }: IconProps) => {
-  const isValidIcon = (name: string): name is IconName => name in IconsRegistry;
-
-  if (!isValidIcon(name)) return null;
+const Icon = ({ name, className, ...props }: IconProps): JSX.Element => {
   const IconComponent = IconsRegistry[name];
-  return <IconComponent {...props} />;
+  return <IconComponent {...props} className={cn(className)} />;
 };
 
 export default Icon;
