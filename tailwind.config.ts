@@ -79,6 +79,12 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      transitionDuration: {
+        DEFAULT: '300ms',
+      },
+      opacity: {
+        disabled: '0.3',
+      },
     },
   },
   plugins: [TailwindAnimate, customPlugin],
