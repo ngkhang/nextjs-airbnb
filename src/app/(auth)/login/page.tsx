@@ -8,7 +8,9 @@ import { Button } from '@/components/ui/button';
 import { LogInSchema } from '@/schemas/auth.schema';
 import useZodForm from '@/hooks/useZodForm';
 import { LogInType } from '@/types/auth.type';
-import { ROUTE } from '@/utils/constant';
+import AuthService from '@/services/auth.service';
+import ROUTE from '@/utils/constants/routes';
+import { ErrorResponse } from '@/types/common.type';
 
 const LoginPage = () => {
   const router = useRouter();
@@ -22,18 +24,17 @@ const LoginPage = () => {
 
   const onSubmit = async (data: LogInType) => {
     // Handle logic: set global state, ...
-    console.log('Send request and response from server: ', data);
-    setTimeout(() => {
-      // Get notification
-      toast.success('Login successful', {
+    try {
+      const response = await AuthService.login(data);
+      toast.success(`Login successful`, {
         onClose: () => {
-          // Clear form
           form.reset({}, { keepValues: false });
-          // Redirect to home
-          router.push(ROUTE.HOME.root);
+          router.push(ROUTE.HOME.ROOT);
         },
       });
-    }, 4000);
+    } catch (error) {
+      toast.error((error as ErrorResponse).content);
+    }
   };
 
   return (
