@@ -14,19 +14,8 @@ const authService = {
       if (token) cookieClient.set(KEYS.TOKEN, token);
       return data;
     } catch (error) {
-      if ((error as ErrorResponse).statusCode) {
-        throw error;
-      }
-
-      // For unexpected errors, create a generic error response
-      const unexpectedError: ErrorResponse = {
-        statusCode: 500,
-        dateTime: new Date().toISOString(),
-        content: 'An unexpected error occurred',
-        message: error instanceof Error ? error.message : 'Unknown error',
-      };
-
-      throw unexpectedError;
+      console.log('🚀 ~ login: ~ error:', error);
+      throw error;
     }
   },
 };

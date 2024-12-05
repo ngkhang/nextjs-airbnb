@@ -49,7 +49,6 @@ httpClient.interceptors.response.use(
   },
   (error: AxiosError<ErrorResponse>) => {
     // TODO: Check token expired if needed
-    // TODO: Handling error for case: Server response error; Server not receive request and Config request error
     let errorResponse: ErrorResponse = {
       statusCode: HTTP_CODE_ERROR.INTERNAL_SERVER_ERROR,
       dateTime: new Date().toISOString(),
@@ -58,11 +57,18 @@ httpClient.interceptors.response.use(
     };
 
     if (error.response) {
-      errorResponse = {
-        ...errorResponse,
-        ...error.response.data,
-      };
+      if (error.response.data) {
+        errorResponse = error.response.data;
+      } else {
+        errorResponse = {
+          ...errorResponse,
+          content: 'Unknown error',
+          statusCode: error.response.status,
+          message: error.message,
+        };
+      }
     }
+
     return Promise.reject(errorResponse);
   }
 );
