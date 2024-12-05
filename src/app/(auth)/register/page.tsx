@@ -2,29 +2,16 @@
 
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
-import { z } from 'zod';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
 import { RegisterSchema } from '@/schemas/auth.schema';
 import useZodForm from '@/hooks/useZodForm';
 import { RegisterType } from '@/types/auth.type';
 import ROUTES from '@/utils/constants/routes';
 import authService from '@/services/auth.service';
 import { ErrorResponse } from '@/types/common.type';
+import FormFieldComponent, { DataFieldType } from '@/components/form/form-field';
+import FormWrapper from '@/components/form/form-wrapper';
 
-interface FormFieldType<T extends z.ZodTypeAny> {
-  id: number;
-  fieldName: keyof z.infer<T>;
-  label: string;
-  input: {
-    require: boolean;
-    placeholder?: string;
-    typeInput: string;
-  };
-}
-
-const formFields: FormFieldType<typeof RegisterSchema>[] = [
+const dataFields: DataFieldType<typeof RegisterSchema>[] = [
   {
     id: 0,
     fieldName: 'email',
@@ -84,32 +71,11 @@ const RegisterPage = () => {
   };
 
   return (
-    <Form {...form}>
-      <form name='RegisterForm' onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
-        {formFields.map((item) => (
-          <FormField
-            key={item.id}
-            control={form.control}
-            name={item.fieldName}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className='text-inherit'>
-                  {item.label} {item.input.require && <span className='text-sm text-red-500'>*</span>}
-                </FormLabel>
-                <FormControl>
-                  <Input type={item.input.typeInput} placeholder={item.input.placeholder} {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        ))}
-
-        <Button type='submit' className='w-full py-5'>
-          Create New Account
-        </Button>
-      </form>
-    </Form>
+    <FormWrapper formName='RegisterForm' form={form} buttonSubmit={{ text: 'Create New Account' }} onSubmit={onSubmit}>
+      {dataFields.map((item) => (
+        <FormFieldComponent key={item.id} form={form} fieldData={item} />
+      ))}
+    </FormWrapper>
   );
 };
 
