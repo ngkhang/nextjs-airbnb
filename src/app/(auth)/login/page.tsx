@@ -5,11 +5,11 @@ import { useRouter } from 'next/navigation';
 import { LogInSchema } from '@/schemas/auth.schema';
 import useZodForm from '@/hooks/useZodForm';
 import { LogInType } from '@/types/auth.type';
-import AuthService from '@/services/auth.service';
-import ROUTE from '@/utils/constants/routes';
+import authService from '@/services/auth.service';
 import { ErrorResponse } from '@/types/common.type';
 import FormFieldComponent, { DataFieldType } from '@/components/form/form-field';
 import FormWrapper from '@/components/form/form-wrapper';
+import ROUTES from '@/utils/constants/routes';
 
 const dataFields: DataFieldType<typeof LogInSchema>[] = [
   {
@@ -47,11 +47,12 @@ const LoginPage = () => {
   const onSubmit = async (data: LogInType) => {
     // Handle logic: set global state, ...
     try {
-      const response = await AuthService.login(data);
+      await authService.login(data);
+      // TODO: Add info into localStorage or Global store
       toast.success(`Login successful`, {
         onClose: () => {
           form.reset({}, { keepValues: false });
-          router.push(ROUTE.HOME.ROOT);
+          router.push(ROUTES.HOME.ROOT);
         },
       });
     } catch (error) {

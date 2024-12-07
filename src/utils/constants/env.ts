@@ -12,6 +12,7 @@ export const ENV = {
 export const KEYS = {
   TOKEN_CYBERSOFT: 'tokenCybersoft',
   TOKEN: 'token',
+  SESSION: 'session',
 } as const;
 
 // // NOTE: Validation env variable

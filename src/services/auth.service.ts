@@ -3,7 +3,7 @@ import { KEYS } from '@/utils/constants/env';
 import { LoginResponse, LogInType, RegisterResponse, RegisterType } from '@/types/auth.type';
 import { ErrorResponse } from '@/types/common.type';
 import API from '@/utils/constants/api';
-import cookieClient from '@/utils/cookiesClient';
+import { createSession, deleteSession } from '@/lib/session';
 
 // NOTE: Write description auth actions
 const authService = {
@@ -11,7 +11,8 @@ const authService = {
     try {
       const { data } = await httpClient.post<LoginResponse>(API.AUTH.LOGIN, credentials);
       const token = data.content.token;
-      if (token) cookieClient.set(KEYS.TOKEN, token);
+      if (token) await createSession(KEYS.SESSION, token);
+
       return data;
     } catch (error) {
       console.log('🚀 ~ login: ~ error:', error);
@@ -27,6 +28,10 @@ const authService = {
       console.log('🚀 ~ register: ~ error:', error);
       throw error;
     }
+  },
+
+  logout: async () => {
+    await deleteSession(KEYS.SESSION);
   },
 };
 
