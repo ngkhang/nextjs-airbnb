@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 import { decodeToken, getSession } from './lib/session';
 import { KEYS } from './utils/constants/env';
 
@@ -13,25 +14,23 @@ export default async function middleware(req: NextRequest) {
   const isPublicRoute = publicRoutes.includes(path);
 
   // 3. Decrypt the session from the cookie
-  let session = null;
-  try {
-    const cookie = (await getSession(KEYS.SESSION))?.value;
-    session = cookie ? decodeToken(cookie) : null;
-  } catch (error) {
-    session = null;
-  }
+  const session = (await getSession(KEYS.SESSION))?.value;
+  const userInfo = session ? await decodeToken(session) : null;
 
   // 4. Redirect to /login if the user is not authenticated
-  if (isProtectedRoute && !session) {
+  if (isProtectedRoute && !userInfo) {
     return NextResponse.redirect(new URL('/login', req.nextUrl));
   }
 
-  // 5. Redirect to /dashboard if the user is authenticated
-  if (isPublicRoute && session?.id) {
+  // 5. Redirect to /profile if the user is authenticated
+  if (isPublicRoute && userInfo?.id) {
     return NextResponse.redirect(new URL('/profile', req.nextUrl));
   }
 
-  return NextResponse.next();
+  // 4. Create a new response with headers
+  const response = NextResponse.next();
+  if (session) response.headers.set(KEYS.TOKEN, session);
+  return response;
 }
 
 // Routes Middleware should not run on

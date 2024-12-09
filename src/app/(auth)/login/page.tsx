@@ -10,6 +10,7 @@ import { ErrorResponse } from '@/types/common.type';
 import FormFieldComponent, { DataFieldType } from '@/components/form/form-field';
 import FormWrapper from '@/components/form/form-wrapper';
 import ROUTES from '@/utils/constants/routes';
+import { useAuth } from '@/components/AuthProvider';
 
 const dataFields: DataFieldType<typeof LogInSchema>[] = [
   {
@@ -36,7 +37,7 @@ const dataFields: DataFieldType<typeof LogInSchema>[] = [
 
 const LoginPage = () => {
   const router = useRouter();
-
+  const { setUserLogin } = useAuth();
   const form = useZodForm(LogInSchema, {
     defaultValues: {
       email: '',
@@ -45,10 +46,10 @@ const LoginPage = () => {
   });
 
   const onSubmit = async (data: LogInType) => {
-    // Handle logic: set global state, ...
     try {
-      await authService.login(data);
-      // TODO: Add info into localStorage or Global store
+      const result = await authService.login(data);
+      if (typeof result.content !== 'string') setUserLogin(result.content);
+
       toast.success(`Login successful`, {
         onClose: () => {
           form.reset({}, { keepValues: false });
