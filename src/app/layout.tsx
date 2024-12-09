@@ -3,10 +3,11 @@ import '@/assets/styles/globals.css';
 import { Airbnb } from '@/lib/fontsLocal';
 import { defaultContent } from '@/lib/staticContent';
 import ToastProvider from '@/components/ToastProvider';
+import AuthProvider from '@/components/AuthProvider';
 
 export const metadata: Metadata = defaultContent.rootContent.metaData;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -14,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${Airbnb.variable}`}>
-        {children}
+        <AuthProvider>{children}</AuthProvider>
         <ToastProvider />
       </body>
     </html>
