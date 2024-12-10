@@ -13,7 +13,7 @@ export const LogInSchema = z.object({
 });
 
 export const RegisterSchema = LogInSchema.extend({
-  fullName: z
+  name: z
     .string({ message: 'This is required field' })
     .refine((value) => !value.match(/^[0-9]+/g), 'Your full name is not starting with number.')
     .refine((value) => value.split(/\s+/g).length >= 2, 'Enter your full name with 2 words, separated by a space.'),
