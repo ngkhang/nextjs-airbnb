@@ -1,14 +1,17 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { defaultContent } from '@/lib/staticContent';
 import fakeDataHome from '@/fakeData/fakeHome.json';
 import { cn, formatCurrency } from '@/lib/utils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import HeaderDefault from '@/components/default/Header';
 import FooterDefault from '@/components/default/Footer';
 import { Separator } from '@/components/ui/separator';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import Icon from '@/components/icon/Icons';
+import UserHeader from '@/components/layout/user/user-header/UserHeader';
+import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
 
 const { PropertiesData, ExploreData } = fakeDataHome;
 const { homeContent, commonContent } = defaultContent;
@@ -32,13 +35,13 @@ export default function Home() {
       {/* Header section */}
       <div className=''>
         <div className='container'>
-          <HeaderDefault />
+          <UserHeader />
         </div>
 
         <Separator className='mb-3 hidden md:block' />
 
-        <section className='shadow-xl md:container'>
-          <Carousel className='col-span-3 w-full px-3' opts={{ duration: 25 }}>
+        <section className='grid grid-flow-col grid-cols-5 shadow-xl md:container xl:grid-cols-6'>
+          <Carousel className='col-span-full md:col-span-2 lg:col-span-3 xl:col-span-4' opts={{ duration: 25 }}>
             <CarouselContent className='mx-2'>
               {Categories.map((item) => (
                 <CarouselItem
@@ -62,23 +65,26 @@ export default function Home() {
             <CarouselNext className='mr-4 hidden fill-black shadow-none md:flex' />
           </Carousel>
 
-          {/* <div className='col-span-2 grid grid-flow-col gap-3'>
-            <Button className='flex items-center'>
-              <Icon name='Adjust' />
-              <span>Bộ lọc</span>
-            </Button>
+          <div className='hidden justify-end space-x-4 py-2 text-sm font-medium md:col-span-3 md:flex lg:col-span-2'>
+            <Link href='/' className='flex items-center space-x-2 rounded-2xl border px-4 py-0'>
+              <Icon name='Adjust' size={20} />
+              <span>Filter</span>
+            </Link>
 
-            <Button className='flex items-center space-x-2'>
-              <Label htmlFor='airplane-mode'>Hiển thị tổng trước thuế</Label>
-              <Switch id='airplane-mode' />
-            </Button>
-          </div> */}
+            <Link href='/' className='flex items-center space-x-2 rounded-2xl border px-4 py-0'>
+              <Label htmlFor='airplane-mode' className=''>
+                Display total before taxes
+              </Label>
+              <Switch className='h-6 data-[state=checked]:bg-[#6A6A6A]' />
+            </Link>
+          </div>
         </section>
       </div>
 
       {/* List properties */}
       <section className='container mb-8 mt-6'>
-        <div className='grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-10 xl:grid-cols-4 xl:gap-8 3xl:grid-cols-5 4xl:grid-cols-6'>
+        <div className='grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-10 xl:grid-cols-4 xl:gap-8 3xl:grid-cols-5 4xl:grid-cols-6'>
+          {/* TODO: Call API */}
           {PropertiesData.map((item) => (
             <Card key={item.id} className={cn('w-full rounded-none border-none p-0 shadow-none')}>
               {/* Card Header */}
@@ -114,15 +120,15 @@ export default function Home() {
                   ))}
                 </div>
 
-                <div className='mb-1 grid grid-cols-2 grid-rows-2 gap-1 text-sm text-[#6A6A6A]'>
+                <div className='mb-2 grid grid-cols-2 grid-rows-2 gap-1 text-sm text-[#6A6A6A]'>
                   {infoHome.map((info, index) => (
                     <span key={index}>{`· ${item[info.key as keyof typeof item]} ${info.title}`}</span>
                   ))}
                 </div>
-                <p className='mb-2 truncate text-sm'>{item.moTa}</p>
+                <p className='mb-2 hidden truncate text-sm'>{item.moTa}</p>
 
                 <div className='flex items-center text-sm'>
-                  <Icon name='Vnd' />
+                  <Icon className='size-5' name='Vnd' />
                   <span className='mr-1 text-lg font-semibold'>{formatCurrency(+item.giaTien)}</span>
                   <span>đêm</span>
                 </div>
@@ -139,7 +145,8 @@ export default function Home() {
           <p className='text-base text-[#6A6A6A]'>{Explore.description}</p>
         </div>
 
-        <div className='grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6 lg:gap-5'>
+        <div className='grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-5 xl:grid-cols-6'>
+          {/* TODO: Call API */}
           {ExploreData.map((item) => (
             <Card
               key={item.id}

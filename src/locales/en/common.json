@@ -9,10 +9,11 @@
         "key": 0,
         "title": "Stays",
         "active": true,
-        "where": {
-          "title": "Where",
-          "description": "Search destinations",
-          "items": {
+        "items": {
+          "where": {
+            "id": "where",
+            "label": "Where",
+            "placeholder": "Search destinations",
             "location": {
               "title": "Search by location",
               "description": "Choose places your search",
@@ -89,33 +90,33 @@
                 { "key": 1, "title": "Europe", "image": "/assets/images/map-region/europe.jpg" },
                 { "key": 2, "title": "South Korea", "image": "/assets/images/map-region/south-korea.jpg" },
                 { "key": 3, "title": "United States", "image": "/assets/images/map-region/united-states.jpg" },
-                { "key": 3, "title": "Thailand", "image": "/assets/images/map-region/thailand.jpg" },
-                { "key": 4, "title": "Australia", "image": "/assets/images/map-region/australia.jpg" }
+                { "key": 4, "title": "Thailand", "image": "/assets/images/map-region/thailand.jpg" },
+                { "key": 5, "title": "Australia", "image": "/assets/images/map-region/australia.jpg" }
               ]
             }
-          }
-        },
-        "checkInOut": [
-          {
-            "key": 0,
-            "title": "Check in",
-            "description": "Add dates"
           },
-          {
-            "key": 1,
-            "title": "Check out",
-            "description": "Add dates"
+          "when": {
+            "id": "when",
+            "label": "Check in - Check out",
+            "placeholder": "Add dates"
+          },
+          "who": {
+            "id": "who",
+            "label": "Who",
+            "placeholder": "Add guests",
+            "options": [
+              { "key": 0, "id": "adults", "defaultValue": 2, "title": "Adults", "description": "Ages 13 or above" },
+              { "key": 1, "id": "children", "defaultValue": 0, "title": "Children", "description": "Ages 2 - 12" },
+              { "key": 2, "id": "infants", "defaultValue": 0, "title": "Infants", "description": "Under 2" },
+              {
+                "key": 3,
+                "id": "pets",
+                "defaultValue": 0,
+                "title": "Pets",
+                "description": "Bringing a service animal?"
+              }
+            ]
           }
-        ],
-        "who": {
-          "title": "Who",
-          "description": "Add guests",
-          "items": [
-            { "key": 0, "id": "adults", "defaultValue": 2, "title": "Adults", "description": "Ages 13 or above" },
-            { "key": 1, "id": "children", "defaultValue": 0, "title": "Children", "description": "Ages 2 - 12" },
-            { "key": 2, "id": "infants", "defaultValue": 0, "title": "Infants", "description": "Under 2" },
-            { "key": 3, "id": "pets", "defaultValue": 0, "title": "Pets", "description": "Bringing a service animal?" }
-          ]
         }
       },
       {
@@ -136,8 +137,8 @@
       },
       "profile": {
         "top": [
-          { "key": 0, "title": "Sign up", "url": "register" },
-          { "key": 0, "title": "Log in", "url": "login" }
+          { "key": 0, "title": "Sign up", "url": "/register" },
+          { "key": 0, "title": "Log in", "url": "/login" }
         ],
         "subs": [
           { "key": 0, "title": "Gift cards", "url": "/" },
