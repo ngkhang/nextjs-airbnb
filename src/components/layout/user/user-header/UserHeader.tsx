@@ -8,23 +8,31 @@ import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
+import { cn } from '@/lib/utils';
 
 const { logo, sub } = defaultContent.commonContent.Header;
 
-const UserHeader = () => (
+interface Props {
+  hasSearchForm?: boolean;
+  isShowLogo?: boolean;
+}
+
+const UserHeader = ({ hasSearchForm = true, isShowLogo = false }: Props) => (
   <header>
-    <div className='grid-cols-7 grid-rows-3 gap-4 py-3 md:grid md:py-5'>
+    <div className={cn('grid-cols-7 gap-4 py-3 md:grid md:py-5', hasSearchForm ? 'grid-rows-3' : 'grid-rows-1')}>
       {/* Logo section */}
-      <div className='col-start-1 col-end-2 row-start-1 hidden self-center md:block'>
+      <div className={cn('col-start-1 col-end-2 row-start-1 self-center', !isShowLogo && 'hidden md:block')}>
         <Link href={logo.url} className='inline-block size-8'>
           <Icon name={logo.alt as IconName} />
         </Link>
       </div>
 
       {/* Search section */}
-      <div className='col-span-full row-span-2 row-start-2'>
-        <Search />
-      </div>
+      {hasSearchForm && (
+        <div className='col-span-full row-span-2 row-start-2'>
+          <Search />
+        </div>
+      )}
 
       {/* Sub section */}
       <div className='col-start-5 col-end-8 row-start-1 hidden items-center justify-end space-x-2 md:flex'>

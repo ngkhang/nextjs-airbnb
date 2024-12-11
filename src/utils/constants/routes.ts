@@ -6,10 +6,19 @@ const ROUTES = {
     ROOT: '/',
   },
   AUTH: {
-    LOGIN: 'login',
-    REGISTER: 'register',
+    LOGIN: '/login',
+    REGISTER: '/register',
+  },
+  USER: {
+    SHOW: '/users/show',
+    PROFILE: '/users/personal-info',
+    EARNINGS: '/users/transaction_history',
+    UPDATE_INFO: '/users/account-settings/personal-info',
+    SECURITY: '/users/account-settings/security',
   },
   NOT_FOUND: '/not-found',
 } as const;
+
+export type RoutesUser = keyof typeof ROUTES.USER;
 
 export default ROUTES;

@@ -4,6 +4,7 @@ import en_error from '../locales/en/errorPage.json';
 import en_notfound from '../locales/en/notFound.json';
 import en_auth from '../locales/en/auth.json';
 import en_home from '../locales/en/homepage.json';
+import en_user from '../locales/en/usersPage.json';
 
 const SUPPORTED_LOCALES = ['en'] as const;
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
@@ -15,6 +16,7 @@ interface StaticContent {
   notFoundContent: typeof en_notfound;
   authContent: typeof en_auth;
   homeContent: typeof en_home;
+  userContent: typeof en_user;
 }
 
 const staticContent: Record<SupportedLocale, StaticContent> = {
@@ -25,6 +27,7 @@ const staticContent: Record<SupportedLocale, StaticContent> = {
     notFoundContent: en_notfound,
     authContent: en_auth,
     homeContent: en_home,
+    userContent: en_user,
   },
 };
 
