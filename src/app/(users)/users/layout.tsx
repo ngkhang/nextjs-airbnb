@@ -1,5 +1,5 @@
-import FooterDefault from '@/components/default/Footer';
 import UserHeader from '@/components/layout/user/user-header/UserHeader';
+import FooterDefault from '@/components/default/Footer';
 
 interface Props {
   children: React.ReactNode;
@@ -14,7 +14,9 @@ export default async function UserLayout({ children }: Props) {
       </div>
 
       {/* Main User Layout */}
-      <main className='container flex-grow py-10 pt-6'>{children}</main>
+      <main className='container flex-grow py-10 pt-6'>
+        <section className='mx-auto max-w-[380px] lg:max-w-[1162px]'>{children}</section>
+      </main>
 
       {/* Footer section */}
       <footer className='container hidden grid-cols-6 gap-6 self-end bg-[#F7F7F7] md:block 4xl:grid'>

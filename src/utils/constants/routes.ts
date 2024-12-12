@@ -10,11 +10,12 @@ const ROUTES = {
     REGISTER: '/register',
   },
   USER: {
-    SHOW: '/users/show',
-    PROFILE: '/users/personal-info',
-    EARNINGS: '/users/transaction_history',
-    UPDATE_INFO: '/users/account-settings/personal-info',
-    SECURITY: '/users/account-settings/security',
+    DASHBOARD: '/users/show/',
+    PROFILE: '/users/show/profile-info',
+    EARNINGS: '/users/show/transaction_history',
+    ACCOUNT_SETTINGS: '/users/account-settings',
+    UPDATE_PROFILE: '/users/account-settings/update-profile',
+    CHANGE_PASSWORD: '/users/account-settings/change-password',
   },
   NOT_FOUND: '/not-found',
 } as const;

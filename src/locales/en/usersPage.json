@@ -1,151 +1,185 @@
 {
-  "shortOverview": {
-    "typeAccount": "Guest",
-    "items": [
-      {
-        "key": 0,
-        "title": "Reviews",
-        "description": "262"
+  "shared": {
+    "shortOverview": {
+      "typeUser": "Guest",
+      "items": [
+        {
+          "key": 0,
+          "title": "Reviews",
+          "description": "262"
+        },
+        {
+          "key": 1,
+          "title": "Rating",
+          "icon": "Star",
+          "description": "200"
+        },
+        {
+          "key": 2,
+          "title": "Years on Airbnb",
+          "description": "2"
+        }
+      ]
+    },
+    "confirmed": {
+      "title": "'s confirmed information",
+      "items": [
+        {
+          "key": 0,
+          "id": "identity",
+          "title": "Identity"
+        },
+        {
+          "key": 1,
+          "id": "email",
+          "title": "Email address"
+        },
+        {
+          "key": 2,
+          "id": "phone",
+          "title": "Phone number"
+        }
+      ]
+    },
+    "accountSettings": {
+      "title": "Account",
+      "top": {
+        "id": "DASHBOARD",
+        "icon": "BadgeCheck",
+        "title": "My Account"
       },
-      {
-        "key": 1,
-        "title": "Rating",
-        "icon": "Star",
-        "description": "200"
-      },
-      {
-        "key": 2,
-        "title": "Years on Airbnb",
-        "description": "2"
+      "middle": [
+        {
+          "key": 0,
+          "group": [
+            {
+              "key": 0,
+              "id": "PROFILE",
+              "title": "Personal info",
+              "icon": "CircleUserRound",
+              "disable": false
+            },
+            {
+              "key": 1,
+              "id": "EARNINGS",
+              "title": "Earnings",
+              "icon": "CreditCard",
+              "disable": false
+            },
+            {
+              "key": 2,
+              "id": "ACCOUNT_SETTINGS",
+              "title": "Security",
+              "icon": "Settings",
+              "disable": false
+            }
+          ]
+        },
+        {
+          "key": 1,
+          "group": [
+            {
+              "key": 0,
+              "id": "INVITE",
+              "title": "Invite friends",
+              "icon": "",
+              "disable": true
+            },
+            {
+              "key": 1,
+              "id": "GLOBAL_PREFERENCES",
+              "title": "Global preferences",
+              "icon": "",
+              "disable": true
+            },
+            {
+              "key": 2,
+              "id": "HELP",
+              "title": "Help",
+              "icon": "",
+              "disable": true
+            }
+          ]
+        }
+      ],
+      "bottom": {
+        "id": "",
+        "title": "Log out",
+        "icon": "LogOut"
       }
-    ]
+    },
+    "report": {
+      "title": "Report this profile",
+      "url": "/"
+    }
   },
-  "shareInfo": {
-    "ask": [
-      {
-        "key": 0,
-        "icon": "GraduationCap",
-        "title": "Where I went to school",
-        "description": "Life University"
-      },
-      {
-        "key": 1,
-        "icon": "BriefcaseBusiness",
-        "title": "My work",
-        "description": "Home of Happiness"
-      },
+  "dashboard": {
+    "title": "About",
+    "publicInfo": {
+      "ask": [
+        {
+          "key": 0,
+          "icon": "GraduationCap",
+          "title": "Where I went to school",
+          "description": "Life University"
+        },
+        {
+          "key": 1,
+          "icon": "BriefcaseBusiness",
+          "title": "My work",
+          "description": "Home of Happiness"
+        },
 
-      {
-        "key": 2,
-        "icon": "Music",
-        "title": "Favorite song in high school",
-        "description": "Spice up your life"
-      },
-      {
-        "key": 3,
-        "icon": "Sparkles",
-        "title": "What makes my home unique",
-        "description": " my peaceful energy sending to my home"
-      },
-      {
-        "key": 4,
-        "icon": "PawPrint",
-        "title": "Pets",
-        "description": "dog"
-      },
-      {
-        "key": 5,
-        "icon": "Languages",
-        "title": "Speaks",
-        "description": "English and Vietnamese"
-      },
-      {
-        "key": 6,
-        "icon": "Heart",
-        "title": "I'm obsessed with",
-        "description": "my unique gift"
-      },
-      {
-        "key": 7,
-        "icon": "BookOpen",
-        "title": "My biography title",
-        "description": "Live a Happy Life!"
-      },
-      {
-        "key": 8,
-        "icon": "HandPlatter",
-        "title": "For guests, I always",
-        "description": "respectful"
-      },
-      {
-        "key": 9,
-        "icon": "Utensils",
-        "title": "What's for breakfast",
-        "description": "fruits and cereal"
-      }
-    ],
-    "about": "I like to use the word AMAZING to describe my clients. I am so excited we have reached 1000 reviews on 29th Aug this year!\n\nI am also a certified coach. I love what I do, I am thankful to my life, it is beautiful.\n\nOne part of my income from Airbnb and other work is dedicated to forest reservations and charity projects.\n\nBook with me today, have a vacation you never forget and let us help the world together!"
-  },
-  "confirmed": {
-    "title": "'s confirmed information",
-    "items": [
-      {
-        "key": 0,
-        "title": "Identity"
-      },
-      {
-        "key": 1,
-        "title": "Email address"
-      },
-      {
-        "key": 2,
-        "title": "Phone number"
-      }
-    ]
-  },
-  "accountSettings": {
-    "title": "Account settings",
-    "items": [
-      {
-        "key": 0,
-        "group": [
-          {
-            "key": "PROFILE",
-            "title": "Personal info",
-            "icon": "",
-            "disable": false
-          },
-          {
-            "key": "EARNINGS",
-            "title": "Earnings",
-            "icon": "",
-            "disable": false
-          },
-          {
-            "key": "SECURITY",
-            "title": "Login & security",
-            "icon": "",
-            "disable": false
-          }
-        ]
-      },
-      {
-        "key": 1,
-        "group": [
-          {
-            "key": "INVITE",
-            "title": "Invite friends",
-            "icon": "",
-            "disable": true
-          },
-          {
-            "key": "GLOBAL_PREFERENCES",
-            "title": "Global preferences",
-            "icon": "",
-            "disable": true
-          }
-        ]
-      }
-    ]
+        {
+          "key": 2,
+          "icon": "Music",
+          "title": "Favorite song in high school",
+          "description": "Spice up your life"
+        },
+        {
+          "key": 3,
+          "icon": "Sparkles",
+          "title": "What makes my home unique",
+          "description": " my peaceful energy sending to my home"
+        },
+        {
+          "key": 4,
+          "icon": "PawPrint",
+          "title": "Pets",
+          "description": "dog"
+        },
+        {
+          "key": 5,
+          "icon": "Languages",
+          "title": "Speaks",
+          "description": "English and Vietnamese"
+        },
+        {
+          "key": 6,
+          "icon": "Heart",
+          "title": "I'm obsessed with",
+          "description": "my unique gift"
+        },
+        {
+          "key": 7,
+          "icon": "BookOpen",
+          "title": "My biography title",
+          "description": "Live a Happy Life!"
+        },
+        {
+          "key": 8,
+          "icon": "HandPlatter",
+          "title": "For guests, I always",
+          "description": "respectful"
+        },
+        {
+          "key": 9,
+          "icon": "Utensils",
+          "title": "What's for breakfast",
+          "description": "fruits and cereal"
+        }
+      ],
+      "about": "I like to use the word AMAZING to describe my clients. I am so excited we have reached 1000 reviews on 29th Aug this year!\n\nI am also a certified coach. I love what I do, I am thankful to my life, it is beautiful.\n\nOne part of my income from Airbnb and other work is dedicated to forest reservations and charity projects.\n\nBook with me today, have a vacation you never forget and let us help the world together!"
+    }
   }
 }
