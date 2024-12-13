@@ -30,13 +30,16 @@ import {
   Search,
   SlidersHorizontal,
   ChevronLeft,
+  ChevronsLeft,
   ChevronRight,
+  ChevronsRight,
   CircleUserRound,
   LockKeyhole,
   Shield,
   CreditCard,
   BadgeCheck,
   Settings,
+  ArrowUpDown,
 } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 
@@ -72,13 +75,16 @@ const IconsRegistry = {
   Search,
   SlidersHorizontal,
   ChevronLeft,
+  ChevronsLeft,
   ChevronRight,
+  ChevronsRight,
   CircleUserRound,
   LockKeyhole,
   Shield,
   CreditCard,
   BadgeCheck,
   Settings,
+  ArrowUpDown,
 } as const;
 
 export type IconName = keyof typeof IconsRegistry;

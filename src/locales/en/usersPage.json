@@ -61,8 +61,8 @@
             },
             {
               "key": 1,
-              "id": "EARNINGS",
-              "title": "Earnings",
+              "id": "RESERVATION_HISTORY",
+              "title": "Reservation History",
               "icon": "CreditCard",
               "disable": false
             },
@@ -181,5 +181,65 @@
       ],
       "about": "I like to use the word AMAZING to describe my clients. I am so excited we have reached 1000 reviews on 29th Aug this year!\n\nI am also a certified coach. I love what I do, I am thankful to my life, it is beautiful.\n\nOne part of my income from Airbnb and other work is dedicated to forest reservations and charity projects.\n\nBook with me today, have a vacation you never forget and let us help the world together!"
     }
+  },
+  "profileInfo": {
+    "title": "Personal info",
+    "description": "The information you share will be used across Airbnb to help other guests and Hosts get to know you",
+    "fields": [
+      {
+        "key": 0,
+        "id": "name",
+        "title": "Full name",
+        "textEmpty": "Not provide"
+      },
+      {
+        "key": 1,
+        "id": "email",
+        "title": "Email",
+        "textEmpty": "Not provide"
+      },
+      {
+        "key": 2,
+        "id": "phone",
+        "title": "Phone numbers",
+        "textEmpty": "Not provide"
+      },
+      {
+        "key": 3,
+        "id": "birthday",
+        "title": "Date of birth",
+        "textEmpty": "Not provide"
+      },
+      {
+        "key": 4,
+        "id": "gender",
+        "title": "Gender",
+        "textEmpty": "Not provide"
+      }
+    ],
+    "subInfo": [
+      {
+        "key": 0,
+        "icon": "Shield",
+        "title": "Why isn't my info shown here?",
+        "description": "We're hiding some account details to protect your identity."
+      },
+      {
+        "key": 1,
+        "icon": "LockKeyhole",
+        "title": "Which details can be edited?",
+        "description": "Contact info and personal details can be edited. If this info was used to verify your identity, you'll need to get verified again the next time you book—or to continue hosting."
+      },
+      {
+        "key": 2,
+        "icon": "Eye",
+        "title": "What info is shared with others?",
+        "description": "Airbnb only releases contact information for Hosts and guests after a reservation is confirmed."
+      }
+    ]
+  },
+  "reservationHistory": {
+    "title": "Reservation History",
+    "description": ""
   }
 }
