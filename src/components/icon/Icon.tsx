@@ -18,7 +18,7 @@ import {
   Eye,
   EyeOff,
   Phone,
-  Upload,
+  CloudUpload,
   Calendar,
   Mail,
   PencilLine,
@@ -40,6 +40,12 @@ import {
   BadgeCheck,
   Settings,
   ArrowUpDown,
+  IdCard,
+  Settings2,
+  ChartNoAxesColumn,
+  StickyNote,
+  Megaphone,
+  Gift,
 } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 
@@ -63,7 +69,7 @@ const IconsRegistry = {
   Eye,
   EyeOff,
   Phone,
-  Upload,
+  CloudUpload,
   Calendar,
   Mail,
   PencilLine,
@@ -85,6 +91,12 @@ const IconsRegistry = {
   BadgeCheck,
   Settings,
   ArrowUpDown,
+  IdCard,
+  Settings2,
+  ChartNoAxesColumn,
+  StickyNote,
+  Megaphone,
+  Gift,
 } as const;
 
 export type IconName = keyof typeof IconsRegistry;
@@ -93,6 +105,7 @@ interface IconProps extends LucideProps {
 }
 const Icon = ({ name, ...props }: IconProps) => {
   const LucideIcon = IconsRegistry[name];
+  if (!LucideIcon) return '';
 
   return <LucideIcon {...props} />;
 };
