@@ -46,6 +46,11 @@ import {
   StickyNote,
   Megaphone,
   Gift,
+  Bell,
+  ChevronsUpDown,
+  Users,
+  MapPinHouse,
+  MapPinned,
 } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 
@@ -97,6 +102,11 @@ const IconsRegistry = {
   StickyNote,
   Megaphone,
   Gift,
+  Bell,
+  ChevronsUpDown,
+  Users,
+  MapPinHouse,
+  MapPinned,
 } as const;
 
 export type IconName = keyof typeof IconsRegistry;
