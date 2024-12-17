@@ -1,0 +1,66 @@
+{
+  "shared": {
+    "sidebar": {
+      "navHeader": {
+        "title": "Airbnb",
+        "description": "Admin Management",
+        "avatar": "https://github.com/shadcn.png"
+      },
+      "navMain": [
+        {
+          "key": 0,
+          "title": "User",
+          "url": "/admin/management/users",
+          "icon": "Users"
+        },
+        {
+          "key": 1,
+          "title": "Room",
+          "url": "/admin/management/rooms",
+          "icon": "MapPinHouse"
+        },
+        {
+          "key": 2,
+          "title": "Location",
+          "url": "/admin/management/locations",
+          "icon": "MapPinned"
+        }
+      ]
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "cardOverview": [
+      {
+        "key": 0,
+        "title": "Total location",
+        "icon": "MapPinned",
+        "content": "..."
+      },
+      {
+        "key": 1,
+        "title": "Total Room",
+        "icon": "MapPinHouse",
+        "content": "..."
+      },
+      {
+        "key": 2,
+        "title": "Total User",
+        "icon": "Users",
+        "content": "..."
+      },
+      {
+        "key": 3,
+        "title": "Total Admin",
+        "icon": "Shield",
+        "content": "..."
+      }
+    ],
+    "overviewChart": {
+      "title": "Overview"
+    },
+    "listNewUser": {
+      "title": "Recent Users"
+    }
+  }
+}

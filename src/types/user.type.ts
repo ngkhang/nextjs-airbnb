@@ -9,11 +9,11 @@ export type UserRole = 'USER' | 'ADMIN';
 export interface User {
   id: number;
   name: string;
-  avatar: string;
   email: string;
   password: string;
   phone?: string | null;
   birthday?: string | null;
+  avatar?: string | null;
   gender: boolean;
   role: UserRole;
 }
