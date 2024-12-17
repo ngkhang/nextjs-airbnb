@@ -18,8 +18,8 @@ import Icons from '@/components/icon/Icons';
 import Icon from '@/components/icon/Icon';
 import ROUTES from '@/utils/constants/routes';
 
-const { Inspiration, Explore } = defaultContent.homeContent;
-const { Categories, infoRooms } = defaultContent.commonContent;
+const { inspiration, explore } = defaultContent.homeContent;
+const { categories, infoRooms } = defaultContent.commonContent;
 
 export default async function Home() {
   const rooms = await roomService.getAllRooms();
@@ -40,7 +40,7 @@ export default async function Home() {
         <section className='grid grid-flow-col grid-cols-5 shadow-xl md:container xl:grid-cols-6'>
           <Carousel className='col-span-full md:col-span-2 lg:col-span-3 xl:col-span-4' opts={{ duration: 25 }}>
             <CarouselContent className='mx-2'>
-              {Categories.map((item) => (
+              {categories.map((item) => (
                 <CarouselItem
                   key={item.key}
                   data-state='active'
@@ -143,8 +143,8 @@ export default async function Home() {
       {/* Explore section */}
       <section className='container mb-8 mt-6'>
         <div className='mb-4'>
-          <h3 className='mb-2 text-3xl font-bold text-[#222222]'>{Explore.title}</h3>
-          <p className='text-base text-[#6A6A6A]'>{Explore.description}</p>
+          <h3 className='mb-2 text-3xl font-bold text-[#222222]'>{explore.title}</h3>
+          <p className='text-base text-[#6A6A6A]'>{explore.description}</p>
         </div>
 
         <div className='grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-5 xl:grid-cols-6'>
@@ -178,8 +178,8 @@ export default async function Home() {
         <div className='col-span-4 col-start-2'>
           {/* Inspiration section */}
           <div className='py-10'>
-            <h3 className='mb-2 text-3xl font-bold text-[#222222]'>{Inspiration.title}</h3>
-            <Tabs defaultValue={Inspiration.items[0].title} className=''>
+            <h3 className='mb-2 text-3xl font-bold text-[#222222]'>{inspiration.title}</h3>
+            <Tabs defaultValue={inspiration.items[0].title} className=''>
               <TabsList className='h-fit w-full rounded-none bg-inherit px-0'>
                 <Carousel
                   className='w-full border-b-2 border-[#DDDDDD]'
@@ -188,7 +188,7 @@ export default async function Home() {
                   }}
                 >
                   <CarouselContent className='-ml-1'>
-                    {Inspiration.items.map((item) => (
+                    {inspiration.items.map((item) => (
                       <CarouselItem key={item.key} className='basis-auto pl-0'>
                         <TabsTrigger
                           key={item.key}
@@ -205,7 +205,7 @@ export default async function Home() {
                   <CarouselNext className='-right-6 rounded-none border-none bg-transparent shadow-none' />
                 </Carousel>
               </TabsList>
-              {Inspiration.items.map((tab) => (
+              {inspiration.items.map((tab) => (
                 <TabsContent key={tab.key} value={tab.title} className='mt-0 pt-8'>
                   <ul className='grid grid-cols-2 gap-2 gap-y-6 lg:grid-cols-3 xl:grid-cols-6'>
                     {tab.navLinks.map((item) => (

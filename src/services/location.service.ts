@@ -1,12 +1,12 @@
 import httpClient from '@/lib/axios.config';
-import { ErrorResponse, ResponseBase } from '@/types/common.type';
+import { ResponseBase } from '@/types/common.type';
 import LocationType from '@/types/location';
 import API from '@/utils/constants/api';
 
 const LOCATION_API = API.LOCATIONS;
 
 const locationService = {
-  getAllLocation: async (): Promise<ResponseBase<LocationType[]> | ErrorResponse> => {
+  getAllLocation: async (): Promise<ResponseBase<LocationType[]>> => {
     try {
       const { data } = await httpClient.get<ResponseBase<LocationType[]>>(LOCATION_API.GET_ALL);
 
@@ -16,7 +16,7 @@ const locationService = {
       throw error;
     }
   },
-  getLocationById: async (locationId: number): Promise<ResponseBase<LocationType> | ErrorResponse> => {
+  getLocationById: async (locationId: number): Promise<ResponseBase<LocationType>> => {
     try {
       const { data } = await httpClient.get<ResponseBase<LocationType>>(LOCATION_API.GET_LOCATION_BY_ID(locationId));
 

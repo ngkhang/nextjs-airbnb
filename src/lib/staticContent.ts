@@ -2,8 +2,8 @@ import en_root from '../locales/en/root.json';
 import en_common from '../locales/en/common.json';
 import en_error from '../locales/en/errorPage.json';
 import en_notfound from '../locales/en/notFound.json';
-import en_auth from '../locales/en/auth.json';
-import en_home from '../locales/en/homepage.json';
+import en_auth from '../locales/en/authPage.json';
+import en_home from '../locales/en/homePage.json';
 import en_user from '../locales/en/usersPage.json';
 import en_admin from '../locales/en/adminPage.json';
 

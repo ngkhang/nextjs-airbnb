@@ -1,5 +1,5 @@
 {
-  "Header": {
+  "header": {
     "logo": {
       "url": "/",
       "alt": "Airbnb"
@@ -98,7 +98,7 @@
       }
     }
   },
-  "Categories": [
+  "categories": [
     { "key": 0, "icon": "/assets/icons/icons.png", "title": "Icons" },
     { "key": 1, "icon": "/assets/icons/rooms.jpg", "title": "Rooms" },
     { "key": 2, "icon": "/assets/icons/amazing-views.jpg", "title": "Amazing views" },
@@ -162,7 +162,7 @@
     { "key": 60, "icon": "/assets/icons/riads.jpg", "title": "Riads" },
     { "key": 61, "icon": "/assets/icons/lake.jpg", "title": "Lake" }
   ],
-  "Footer": {
+  "footer": {
     "main": [
       {
         "key": 0,

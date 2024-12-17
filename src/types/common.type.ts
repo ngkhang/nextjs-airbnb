@@ -12,7 +12,7 @@ export interface ResponseBase<T> {
 /**
  * Response Error
  */
-export interface ErrorResponse extends ResponseBase<[]> {
+export interface ErrorResponse extends ResponseBase<string> {
   message: string;
 }
 

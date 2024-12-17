@@ -10,7 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 
-const { logo, sub } = defaultContent.commonContent.Header;
+const { logo, sub } = defaultContent.commonContent.header;
 
 interface Props {
   hasSearchForm?: boolean;

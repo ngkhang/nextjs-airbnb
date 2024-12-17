@@ -20,7 +20,7 @@ import { Calendar } from '@/components/ui/calendar';
 import LocationType from '@/types/location';
 import locationService from '@/services/location.service';
 
-const content = defaultContent.commonContent.Header.search;
+const content = defaultContent.commonContent.header.search;
 
 // TODO: Handle form search
 const Search = () => {

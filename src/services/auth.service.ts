@@ -1,13 +1,12 @@
 import httpClient from '@/lib/axios.config';
 import { KEYS } from '@/utils/constants/env';
 import { LoginResponse, LogInType, RegisterResponse, RegisterType } from '@/types/auth.type';
-import { ErrorResponse } from '@/types/common.type';
 import API from '@/utils/constants/api';
 import { createSession, deleteSession } from '@/lib/session';
 
 // NOTE: Write description auth actions
 const authService = {
-  login: async (credentials: LogInType): Promise<LoginResponse | ErrorResponse> => {
+  login: async (credentials: LogInType): Promise<LoginResponse> => {
     try {
       const { data } = await httpClient.post<LoginResponse>(API.AUTH.LOGIN, credentials);
       const token = data.content.token;
@@ -20,7 +19,7 @@ const authService = {
     }
   },
 
-  register: async (credentials: RegisterType): Promise<RegisterResponse | ErrorResponse> => {
+  register: async (credentials: RegisterType): Promise<RegisterResponse> => {
     try {
       const { data } = await httpClient.post<RegisterResponse>(API.AUTH.REGISTER, credentials);
       return data;

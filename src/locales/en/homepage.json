@@ -1,9 +1,9 @@
 {
-  "Explore": {
+  "explore": {
     "title": "Explore Popular Places",
     "description": "Recommend Nearby Places"
   },
-  "Inspiration": {
+  "inspiration": {
     "title": "Inspiration for future getaways",
     "items": [
       {

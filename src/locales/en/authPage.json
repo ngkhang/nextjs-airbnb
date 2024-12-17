@@ -1,5 +1,5 @@
 {
-  "Login": {
+  "login": {
     "title": "Welcome back!",
     "description": "",
     "banner": {
@@ -13,7 +13,7 @@
     },
     "footer": "By joining, you agree to the Airbnb Terms of Service and to occasionally receive emails from us."
   },
-  "Register": {
+  "register": {
     "title": "Create a new account",
     "description": "Enter your email below to create your account",
     "banner": {
