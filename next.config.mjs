@@ -13,6 +13,11 @@ const nextConfig = {
         hostname: 'airbnbnew.cybersoft.edu.vn',
         pathname: '*'
       },
+      {
+        protocol: 'https',
+        hostname: '**',
+        pathname: '**'
+      },
     ]
   }
 };
