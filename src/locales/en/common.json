@@ -16,72 +16,7 @@
             "placeholder": "Search destinations",
             "location": {
               "title": "Search by location",
-              "description": "Choose places your search",
-              "items": [
-                {
-                  "id": 1,
-                  "tenViTri": "Quận 1",
-                  "tinhThanh": "Hồ Chí Minh",
-                  "quocGia": "Việt Nam",
-                  "hinhAnh": "https://airbnbnew.cybersoft.edu.vn/images/vt1.jpg"
-                },
-                {
-                  "id": 2,
-                  "tenViTri": "Cái Răng",
-                  "tinhThanh": "Cần Thơ",
-                  "quocGia": "Việt Nam",
-                  "hinhAnh": "https://airbnbnew.cybersoft.edu.vn/images/vt2.jpg"
-                },
-                {
-                  "id": 3,
-                  "tenViTri": "Hòn Rùa",
-                  "tinhThanh": "Nha Trang",
-                  "quocGia": "Việt Nam",
-                  "hinhAnh": "https://airbnbnew.cybersoft.edu.vn/images/vt3.jpg"
-                },
-                {
-                  "id": 4,
-                  "tenViTri": "Hoàn Kiếm",
-                  "tinhThanh": "Hà Nội",
-                  "quocGia": "Việt Nam",
-                  "hinhAnh": "https://airbnbnew.cybersoft.edu.vn/images/vt4.jpg"
-                },
-                {
-                  "id": 5,
-                  "tenViTri": "Hòn Tằm",
-                  "tinhThanh": "Phú Quốc",
-                  "quocGia": "Việt Nam",
-                  "hinhAnh": "https://airbnbnew.cybersoft.edu.vn/images/vt5.jpg"
-                },
-                {
-                  "id": 6,
-                  "tenViTri": "Hải Châu",
-                  "tinhThanh": "Đà Nẵng",
-                  "quocGia": "Việt Nam",
-                  "hinhAnh": "https://airbnbnew.cybersoft.edu.vn/images/vt6.jpg"
-                },
-                {
-                  "id": 7,
-                  "tenViTri": "Langbiang",
-                  "tinhThanh": "Đà Lạt",
-                  "quocGia": "Việt Nam",
-                  "hinhAnh": "https://airbnbnew.cybersoft.edu.vn/images/vt7.jpg"
-                },
-                {
-                  "id": 8,
-                  "tenViTri": "Mũi Né",
-                  "tinhThanh": "Phan Thiết",
-                  "quocGia": "Việt Nam",
-                  "hinhAnh": "https://airbnbnew.cybersoft.edu.vn/images/vt8.jpg"
-                },
-                {
-                  "id": 3440,
-                  "tenViTri": "Huyện Tân Yên",
-                  "tinhThanh": "Bắc Giang",
-                  "quocGia": "Việt Nam",
-                  "hinhAnh": "https://airbnbnew.cybersoft.edu.vn/avatar/22-10-2024-02-07-11-13.jpg"
-                }
-              ]
+              "description": "Choose places your search"
             },
             "region": {
               "title": "Search by region",
@@ -105,13 +40,27 @@
             "label": "Who",
             "placeholder": "Add guests",
             "options": [
-              { "key": 0, "id": "adults", "defaultValue": 2, "title": "Adults", "description": "Ages 13 or above" },
-              { "key": 1, "id": "children", "defaultValue": 0, "title": "Children", "description": "Ages 2 - 12" },
-              { "key": 2, "id": "infants", "defaultValue": 0, "title": "Infants", "description": "Under 2" },
+              {
+                "key": 0,
+                "id": "adults",
+                "title": "Adults",
+                "description": "Ages 13 or above"
+              },
+              {
+                "key": 1,
+                "id": "children",
+                "title": "Children",
+                "description": "Ages 2 - 12"
+              },
+              {
+                "key": 2,
+                "id": "infants",
+                "title": "Infants",
+                "description": "Under 2"
+              },
               {
                 "key": 3,
                 "id": "pets",
-                "defaultValue": 0,
                 "title": "Pets",
                 "description": "Bringing a service animal?"
               }
@@ -268,5 +217,12 @@
         { "key": 3, "title": "Your Privacy Choices" }
       ]
     }
-  }
+  },
+  "infoRooms": [
+    { "key": 0, "id": "khach", "title": "Guest" },
+    { "key": 1, "id": "phongNgu", "title": "Bedroom" },
+    { "key": 2, "id": "giuong", "title": "Bed" },
+    { "key": 3, "id": "phongTam", "title": "Bathroom" }
+  ],
+  "equipments": []
 }
