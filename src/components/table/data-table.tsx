@@ -6,15 +6,17 @@ import {
   useReactTable,
   getPaginationRowModel,
   getSortedRowModel,
+  getFilteredRowModel,
 } from '@tanstack/react-table';
 import type { PaginationState, SortingState } from '@tanstack/react-table';
 import { useState } from 'react';
+import { Input } from '../ui/input';
 import { DataTableToolbar } from './data-table-toolbar';
 import { DataTableProps } from './table.type';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { DataTablePagination } from '@/components/table/data-table-pagination';
 
-export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
+export function DataTable<TData, TValue>({ columns, data, filter }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
@@ -28,13 +30,24 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
     onPaginationChange: setPagination,
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
     state: {
       sorting,
       pagination,
     },
   });
+
   return (
     <div className='w-full space-y-4 overflow-auto'>
+      {filter && (
+        <Input
+          placeholder={`Filter ${filter.title}...`}
+          value={(table.getColumn(filter.key)?.getFilterValue() as string) ?? ''}
+          onChange={(event) => table.getColumn(filter.key)?.setFilterValue(event.target.value)}
+          className='max-w-sm'
+        />
+      )}
+
       {/* Toolbar */}
       <DataTableToolbar table={table} />
 
@@ -45,7 +58,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id} className='text-center'>
+                  <TableHead key={header.id} className='w-fit text-center'>
                     {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                   </TableHead>
                 ))}

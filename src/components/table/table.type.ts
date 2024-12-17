@@ -8,6 +8,10 @@ export interface TableBase<TData> {
 export interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  filter?: {
+    key: string;
+    title: string;
+  };
 }
 
 export interface DataTableColumnHeaderProps<TData, TValue> extends React.HTMLAttributes<HTMLDivElement> {
