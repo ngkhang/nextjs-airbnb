@@ -3,29 +3,36 @@
     "sidebar": {
       "navHeader": {
         "title": "Airbnb",
+        "id": "DASHBOARD",
         "description": "Admin Management",
-        "avatar": "https://github.com/shadcn.png"
+        "avatar": "/assets/logo/airbnb-symbol.svg"
       },
       "navMain": [
         {
           "key": 0,
+          "id": "USERS",
           "title": "User",
-          "url": "/admin/management/users",
           "icon": "Users"
         },
         {
           "key": 1,
+          "id": "ROOMS",
           "title": "Room",
-          "url": "/admin/management/rooms",
           "icon": "MapPinHouse"
         },
         {
           "key": 2,
+          "id": "LOCATIONS",
           "title": "Location",
-          "url": "/admin/management/locations",
           "icon": "MapPinned"
         }
       ]
+    },
+    "pageTitle": {
+      "dashboard": "Dashboard",
+      "users": "User Management",
+      "rooms": "Room Management",
+      "locations": "Location Management"
     }
   },
   "dashboard": {
@@ -33,27 +40,27 @@
     "cardOverview": [
       {
         "key": 0,
+        "id": "locations",
         "title": "Total location",
-        "icon": "MapPinned",
-        "content": "..."
+        "icon": "MapPinned"
       },
       {
         "key": 1,
+        "id": "rooms",
         "title": "Total Room",
-        "icon": "MapPinHouse",
-        "content": "..."
+        "icon": "MapPinHouse"
       },
       {
         "key": 2,
+        "id": "users",
         "title": "Total User",
-        "icon": "Users",
-        "content": "..."
+        "icon": "Users"
       },
       {
         "key": 3,
+        "id": "admins",
         "title": "Total Admin",
-        "icon": "Shield",
-        "content": "..."
+        "icon": "Shield"
       }
     ],
     "overviewChart": {

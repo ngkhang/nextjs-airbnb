@@ -1,54 +1,20 @@
 'use client';
 
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
-import { useAuth } from '@/components/AuthProvider';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { defaultContent } from '@/lib/staticContent';
 import Icon, { IconName } from '@/components/icon/Icon';
+import { User } from '@/types/user.type';
+import userService from '@/services/user.service';
+import roomService from '@/services/room.service';
+import locationService from '@/services/location.service';
+import RoomType from '@/types/room.type';
+import LocationType from '@/types/location';
+import { ResponseBase } from '@/types/common.type';
 
 const { cardOverview, listNewUser, overviewChart } = defaultContent.adminContent.dashboard;
-
-// TODO: Call API get list user
-const listUserResponse = [
-  {
-    key: 0,
-    id: 123,
-    email: 'olivia.martin@email.com',
-    name: 'Olivia Martin',
-    avatar: '/avatars/01.png',
-  },
-  {
-    key: 1,
-    id: 123,
-    email: 'olivia.martin@email.com',
-    name: 'Olivia Martin',
-    avatar: '/avatars/01.png',
-  },
-  {
-    key: 2,
-    id: 123,
-    email: 'olivia.martin@email.com',
-    name: 'Olivia Martin',
-    avatar: '/avatars/01.png',
-  },
-  {
-    key: 3,
-    id: 123,
-    email: 'olivia.martin@email.com',
-    name: 'Olivia Martin',
-    avatar: '/avatars/01.png',
-  },
-  {
-    key: 4,
-    id: 123,
-    email: 'olivia.martin@email.com',
-    name: 'Olivia Martin',
-    avatar: '/avatars/01.png',
-  },
-];
 
 const data = [
   {
@@ -102,19 +68,40 @@ const data = [
 ];
 
 export default function DashboardPage() {
-  const router = useRouter();
-  const { isLoading, session, hasRole } = useAuth();
+  // TODO: Check role
+  const [totalOverview, setTotalOverview] = useState({
+    locations: 0,
+    rooms: 0,
+    users: 0,
+    admins: 0,
+  });
 
-  // useEffect(() => {
-  //   // Check useAuth load completed
-  //   if (!isLoading) {
-  //     // Check Authen login and Author based on Role user
-  //     if (!session || !hasRole(['USER'])) {
-  //       router.push('/unauthorize');
-  //       return;
-  //     }
-  //   }
-  // }, [session, router, isLoading, hasRole]);
+  type ResType = [ResponseBase<User[]>, ResponseBase<RoomType[]>, ResponseBase<LocationType[]>];
+
+  const [listUsers, setListUser] = useState<User[] | []>([]);
+  useEffect(() => {
+    const getALlUsers = async () => {
+      Promise.all([
+        userService.getAllUsers().catch((err) => err),
+        roomService.getAllRooms().catch((err) => err),
+        locationService.getAllLocation().catch((err) => err),
+      ]).then((res: ResType) => {
+        setListUser(res[0].content.slice(-5));
+        let lengthUsers = 0;
+        let lengthAdmin = 0;
+
+        res[0].content.forEach((user) => (user.role === 'USER' ? lengthUsers++ : lengthAdmin++));
+
+        setTotalOverview({
+          users: lengthUsers,
+          admins: lengthAdmin,
+          rooms: res[1].content.length,
+          locations: res[2].content.length,
+        });
+      });
+    };
+    getALlUsers();
+  }, []);
 
   return (
     <div className='flex flex-1 flex-col gap-4 p-8 pt-0'>
@@ -126,7 +113,7 @@ export default function DashboardPage() {
               <Icon name={item.icon as IconName} />
             </CardHeader>
             <CardContent>
-              <div className='text-2xl font-bold'>{item.content}</div>
+              <div className='text-2xl font-bold'>{totalOverview[item.id as keyof typeof totalOverview]}</div>
             </CardContent>
           </Card>
         ))}
@@ -159,11 +146,13 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <div className='space-y-8'>
-              {listUserResponse.map((item) => (
-                <div key={item.key} className='flex items-center'>
+              {listUsers.map((item) => (
+                <div key={item.id} className='flex items-center'>
                   <Avatar className='h-9 w-9'>
-                    <AvatarImage src={item.avatar} alt='Avatar' />
-                    <AvatarFallback>OM</AvatarFallback>
+                    <AvatarImage src={item.avatar || ''} alt='Avatar' />
+                    <AvatarFallback>
+                      <Icon name='CircleUserRound' size='16' />
+                    </AvatarFallback>
                   </Avatar>
                   <div className='ml-4 space-y-1 overflow-hidden'>
                     <p className='text-sm font-medium leading-none'>{item.name}</p>

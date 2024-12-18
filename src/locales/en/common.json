@@ -224,5 +224,51 @@
     { "key": 2, "id": "giuong", "title": "Bed" },
     { "key": 3, "id": "phongTam", "title": "Bathroom" }
   ],
-  "equipments": []
+  "equipments": [
+    {
+      "key": 0,
+      "id": "mayGiat",
+      "title": "Máy giặt"
+    },
+    {
+      "key": 0,
+      "id": "banLa",
+      "title": "Bàn là"
+    },
+    {
+      "key": 0,
+      "id": "tivi",
+      "title": "Tivi"
+    },
+    {
+      "key": 0,
+      "id": "dieuHoa",
+      "title": "Điều hòa"
+    },
+    {
+      "key": 0,
+      "id": "wifi",
+      "title": "Wifi"
+    },
+    {
+      "key": 0,
+      "id": "bep",
+      "title": "Bếp"
+    },
+    {
+      "key": 0,
+      "id": "doXe",
+      "title": "Đỗ xe"
+    },
+    {
+      "key": 0,
+      "id": "hoBoi",
+      "title": "Hồ bơi"
+    },
+    {
+      "key": 0,
+      "id": "banUi",
+      "title": "Bàn ủi"
+    }
+  ]
 }

@@ -63,18 +63,12 @@ export const columns: ColumnDef<LocationType>[] = [
         </DropdownMenuTrigger>
         <DropdownMenuContent className=''>
           <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <Button type='button' variant='ghost' className='w-full'>
-                Edit
-              </Button>
-            </DropdownMenuItem>
+            {/* TODO: Handle modal management location */}
+            <DropdownMenuItem>View</DropdownMenuItem>
+            <DropdownMenuItem>Edit</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
-            <Button type='button' variant='destructive' className='w-full'>
-              Delete
-            </Button>
-          </DropdownMenuItem>
+          <DropdownMenuItem>Delete</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     ),

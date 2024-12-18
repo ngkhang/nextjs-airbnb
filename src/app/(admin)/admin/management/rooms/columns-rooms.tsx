@@ -1,6 +1,7 @@
 'use client';
 
 import { type ColumnDef } from '@tanstack/react-table';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/icon/Icon';
 import { DataTableColumnHeaderProps } from '@/components/table/table.type';
@@ -14,45 +15,10 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import RoomType from '@/types/room.type';
+import ROUTES from '@/utils/constants/routes';
+import { defaultContent } from '@/lib/staticContent';
 
-const serviceRooms = [
-  {
-    key: 'mayGiat',
-    title: 'Máy giặt',
-  },
-  {
-    key: 'banLa',
-    title: 'Bàn là',
-  },
-  {
-    key: 'tivi',
-    title: 'Tivi',
-  },
-  {
-    key: 'dieuHoa',
-    title: 'Điều hòa',
-  },
-  {
-    key: 'wifi',
-    title: 'Wifi',
-  },
-  {
-    key: 'bep',
-    title: 'Bếp',
-  },
-  {
-    key: 'doXe',
-    title: 'Đỗ xe',
-  },
-  {
-    key: 'hoBoi',
-    title: 'Hồ bơi',
-  },
-  {
-    key: 'banUi',
-    title: 'Bàn ủi',
-  },
-] as const;
+const { equipments } = defaultContent.commonContent;
 
 export const columns: ColumnDef<RoomType>[] = [
   {
@@ -92,9 +58,9 @@ export const columns: ColumnDef<RoomType>[] = [
     header: 'Service',
     cell: ({ row }) => (
       <p className=''>
-        {serviceRooms.reduce((pre, value, index) => {
-          const isValid = row.original[value.key];
-          if (isValid) pre += serviceRooms.length - 1 === index ? value.title : `${value.title}, `;
+        {equipments.reduce((pre, value, index) => {
+          const isValid = row.original[value.id as keyof typeof row.original];
+          if (isValid) pre += equipments.length - 1 === index ? value.title : `${value.title}, `;
           return pre;
         }, '')}
       </p>
@@ -112,9 +78,13 @@ export const columns: ColumnDef<RoomType>[] = [
         </DropdownMenuTrigger>
         <DropdownMenuContent className=''>
           <DropdownMenuGroup>
+            <DropdownMenuItem>
+              <Link href={ROUTES.ROOM.DETAIL(row.original.id)}>View</Link>
+            </DropdownMenuItem>
             <DropdownMenuItem>Edit</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
+          {/* TODO: Delete rooms */}
           <DropdownMenuItem>Delete</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

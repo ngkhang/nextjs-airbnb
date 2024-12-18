@@ -1,21 +1,27 @@
 'use client';
 
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 import NavHeaderAdmin from './nav-header-admin';
 import NavMainAdmin from '@/components/layout/admin/nav-main-admin';
 import NavFooterAdmin from '@/components/layout/admin/nav-footer-admin';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } from '@/components/ui/sidebar';
 import { defaultContent } from '@/lib/staticContent';
+import { useAuth } from '@/components/AuthProvider';
+import { User } from '@/types/user.type';
 
-// TODO: Call API.
-const userLogin = {
-  name: 'shadcn',
-  email: 'm@example.com',
-  avatar: 'https://github.com/shadcn.png',
-};
 const { sidebar } = defaultContent.adminContent.shared;
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { isLoading, session } = useAuth();
+  const [account, setAccount] = useState<User | null>(null);
+
+  useEffect(() => {
+    // Check useAuth load completed
+    if (!isLoading) {
+      if (session) setAccount(session.user);
+    }
+  }, [session, isLoading]);
+
   return (
     <Sidebar collapsible='icon' {...props}>
       {/* Sidebar Header */}
@@ -29,9 +35,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
 
       {/* Sidebar Footer */}
-      <SidebarFooter>
-        <NavFooterAdmin account={userLogin} />
-      </SidebarFooter>
+      <SidebarFooter>{account && <NavFooterAdmin account={account} />}</SidebarFooter>
 
       <SidebarRail />
     </Sidebar>
