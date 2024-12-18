@@ -10,7 +10,7 @@ const ROUTES = {
     REGISTER: '/register',
   },
   USER: {
-    DASHBOARD: '/users/show/',
+    DASHBOARD: '/users/show',
     PROFILE: '/users/show/profile-info',
     RESERVATION_HISTORY: '/users/show/reservation_history',
     ACCOUNT_SETTINGS: '/users/account-settings',

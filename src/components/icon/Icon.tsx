@@ -52,6 +52,8 @@ import {
   MapPinHouse,
   MapPinned,
   Ellipsis,
+  ImageOff,
+  CalendarIcon,
 } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 
@@ -109,6 +111,8 @@ const IconsRegistry = {
   MapPinHouse,
   MapPinned,
   Ellipsis,
+  ImageOff,
+  CalendarIcon,
 } as const;
 
 export type IconName = keyof typeof IconsRegistry;

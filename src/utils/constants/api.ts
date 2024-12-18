@@ -21,6 +21,9 @@ const API = {
     GET_ALL: '/vi-tri',
     GET_LOCATION_BY_ID: (locationId: number) => `/vi-tri/${locationId}`,
   },
+  BOOKING: {
+    GET_BOOKING_BY_USER_ID: (userId: number) => `/dat-phong/lay-theo-nguoi-dung/${userId}`,
+  },
 } as const;
 
 export default API;

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import isUrl from 'is-url';
 import { defaultContent } from '@/lib/staticContent';
 import { cn, formatCurrency } from '@/lib/utils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -17,12 +18,12 @@ import { keyLocation } from '@/utils/constants/common';
 import Icons from '@/components/icon/Icons';
 import Icon from '@/components/icon/Icon';
 import ROUTES from '@/utils/constants/routes';
-
 const { inspiration, explore } = defaultContent.homeContent;
 const { categories, infoRooms } = defaultContent.commonContent;
 
 export default async function Home() {
   const rooms = await roomService.getAllRooms();
+
   const locations = await locationService.getAllLocation();
 
   const locationInfo = (id: number) => locations.content.filter((item) => item.id === id);
@@ -85,9 +86,9 @@ export default async function Home() {
             rooms.content.map((item) => (
               <Card key={item.id} className={cn('w-full rounded-none border-none p-0 shadow-none')}>
                 {/* Card Header */}
-                <Link href={ROUTES.ROOM.DETAIL(item.id)}>
+                <Link href={ROUTES.ROOM.DETAIL(item.id)} className='block overflow-hidden rounded-2xl'>
                   <CardHeader
-                    className='relative mb-3 size-56 w-full rounded-2xl bg-left-bottom bg-no-repeat p-0 hover:opacity-80 lg:size-64 lg:w-full'
+                    className='relative mb-3 size-56 w-full rounded-2xl bg-left-bottom bg-no-repeat p-0 duration-300 hover:scale-125 hover:opacity-80 lg:size-64 lg:w-full'
                     style={{ backgroundImage: `url(${item.hinhAnh})` }}
                   >
                     <Icon name='Heart' color='#fff' className='absolute right-3 top-3 fill-black/50 hover:scale-125' />
@@ -109,13 +110,12 @@ export default async function Home() {
                     </div>
                   </div>
 
-                  <div className='mb-1 flex items-stretch text-sm text-[#6A6A6A]'>
+                  <div className='mb-1 flex items-stretch space-x-2 text-sm text-[#6A6A6A]'>
                     {keyLocation.map((location, index) => (
-                      <div key={index} className='flex items-center gap-1'>
-                        {locationInfo(item.maViTri) && <span>{locationInfo(item.maViTri)[0][location]}</span>}
-
+                      <div key={index} className='flex h-5 items-center space-x-2 text-sm'>
+                        {locationInfo(item.maViTri)[0] && <span>{locationInfo(item.maViTri)[0][location]}</span>}
                         {keyLocation.length - 1 !== index && (
-                          <Separator orientation='vertical' className='w-[2px] bg-[#6A6A6A]' />
+                          <Separator orientation='vertical' className='bg-[#6A6A6A]' />
                         )}
                       </div>
                     ))}
@@ -153,14 +153,21 @@ export default async function Home() {
               <Link key={item.id} href={ROUTES.ROOM.LOCATION(item.id)}>
                 <Card className='grid h-full w-full grid-cols-5 justify-items-start gap-2 border-none shadow-none'>
                   <CardHeader className='col-span-2 col-start-1 overflow-hidden rounded-2xl p-0'>
-                    <Image
-                      width={100}
-                      height={100}
-                      alt={item.tenViTri}
-                      className='aspect-square h-full w-full rounded-2xl hover:scale-110'
-                      quality={75}
-                      src={item.hinhAnh}
-                    />
+                    {isUrl(item.hinhAnh) ? (
+                      <Image
+                        loading='lazy'
+                        width={50}
+                        height={50}
+                        src={item.hinhAnh}
+                        alt={item.tenViTri}
+                        className='aspect-square size-full rounded-2xl hover:scale-110'
+                        quality={75}
+                      />
+                    ) : (
+                      <div className='aspect-square size-full rounded-2xl bg-[#EEEEEE] center'>
+                        <Icon name='ImageOff' size='30' />
+                      </div>
+                    )}
                   </CardHeader>
                   <CardContent className='col-span-3 col-start-3 p-0 center'>
                     <div className='text-sm'>
