@@ -1,101 +1,183 @@
-import Image from "next/image";
+import Image from 'next/image';
+import Link from 'next/link';
+import isUrl from 'is-url';
+import { defaultContent } from '@/lib/staticContent';
+import { cn } from '@/lib/utils';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import FooterDefault from '@/components/default/Footer';
+import { Separator } from '@/components/ui/separator';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import UserHeader from '@/components/layout/user/user-header/UserHeader';
+import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
+import roomService from '@/services/room.service';
+import locationService from '@/services/location.service';
+// FIXME: Icon component
+import Icon from '@/components/icon/Icon';
+import ROUTES from '@/utils/constants/routes';
+import CardRoom from '@/components/custom/CardRoom';
+const { inspiration, explore } = defaultContent.homeContent;
+const { categories } = defaultContent.commonContent;
 
-export default function Home() {
+export default async function Home() {
+  const rooms = await roomService.getAllRooms();
+
+  const locations = await locationService.getAllLocation();
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className=''>
+      {/* Header section */}
+      <div className=''>
+        <div className='container'>
+          <UserHeader />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <Separator className='mb-3 hidden md:block' />
+
+        <section className='grid grid-flow-col grid-cols-5 shadow-xl md:container xl:grid-cols-6'>
+          <Carousel className='col-span-full md:col-span-2 lg:col-span-3 xl:col-span-4' opts={{ duration: 25 }}>
+            <CarouselContent className='mx-2'>
+              {categories.map((item) => (
+                <CarouselItem
+                  key={item.key}
+                  data-state='active'
+                  className={cn(
+                    'flex basis-auto flex-col items-center border-b-2 border-transparent px-3 py-2 text-[#6A6A6A] opacity-60 hover:opacity-85',
+                    item.key === 0 &&
+                      'opacity-100 data-[state=active]:border-[#222222] data-[state=active]:text-[#222222]'
+                  )}
+                >
+                  <span className='mb-2 size-6'>
+                    <Image src={item.icon} alt={item.title} width={50} height={50} className='w-full' quality={75} />
+                  </span>
+                  <span className='text-xs font-semibold'>{item.title}</span>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+
+            <CarouselPrevious className='ml-4 hidden fill-black shadow-none md:flex' />
+            <CarouselNext className='mr-4 hidden fill-black shadow-none md:flex' />
+          </Carousel>
+
+          <div className='hidden justify-end space-x-4 py-2 text-sm font-medium md:col-span-3 md:flex lg:col-span-2'>
+            <Link href='/' className='flex items-center space-x-2 rounded-2xl border px-4 py-0'>
+              <Icon name='SlidersHorizontal' />
+              <span>Filter</span>
+            </Link>
+
+            <Link href='/' className='flex items-center space-x-2 rounded-2xl border px-4 py-0'>
+              <Label htmlFor='airplane-mode' className=''>
+                Display total before taxes
+              </Label>
+              <Switch className='h-6 data-[state=checked]:bg-[#6A6A6A]' />
+            </Link>
+          </div>
+        </section>
+      </div>
+
+      {/* List properties */}
+      <section className='container mb-8 mt-6'>
+        <div className='grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-10 xl:grid-cols-4 xl:gap-8 3xl:grid-cols-5 4xl:grid-cols-6'>
+          {rooms.content &&
+            rooms.content.map((room) => <CardRoom key={room.id} locations={locations.content} room={room} />)}
+        </div>
+      </section>
+
+      {/* Explore section */}
+      <section className='container mb-8 mt-6'>
+        <div className='mb-4'>
+          <h3 className='mb-2 text-3xl font-bold text-[#222222]'>{explore.title}</h3>
+          <p className='text-base text-[#6A6A6A]'>{explore.description}</p>
+        </div>
+
+        <div className='grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-5 xl:grid-cols-6'>
+          {locations.content &&
+            locations.content.map((item) => (
+              <Link key={item.id} href={ROUTES.ROOM.LOCATION(item.id)}>
+                <Card className='grid h-full w-full grid-cols-5 justify-items-start gap-2 border-none shadow-none'>
+                  <CardHeader className='col-span-2 col-start-1 overflow-hidden rounded-2xl p-0'>
+                    {isUrl(item.hinhAnh) ? (
+                      <Image
+                        loading='lazy'
+                        width={50}
+                        height={50}
+                        src={item.hinhAnh}
+                        alt={item.tenViTri}
+                        className='aspect-square size-full rounded-2xl hover:scale-110'
+                        quality={75}
+                      />
+                    ) : (
+                      <div className='aspect-square size-full rounded-2xl bg-[#EEEEEE] center'>
+                        <Icon name='ImageOff' size='30' />
+                      </div>
+                    )}
+                  </CardHeader>
+                  <CardContent className='col-span-3 col-start-3 p-0 center'>
+                    <div className='text-sm'>
+                      <p className='font-semibold'>{item.tenViTri}</p>
+                      <p className='text-xs text-[#6A6A6A]'>{`${item.tinhThanh}, ${item.quocGia}`}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+        </div>
+      </section>
+
+      <div className='container grid-cols-6 gap-6 bg-[#F7F7F7] 4xl:grid'>
+        <div className='col-span-4 col-start-2'>
+          {/* Inspiration section */}
+          <div className='py-10'>
+            <h3 className='mb-2 text-3xl font-bold text-[#222222]'>{inspiration.title}</h3>
+            <Tabs defaultValue={inspiration.items[0].title} className=''>
+              <TabsList className='h-fit w-full rounded-none bg-inherit px-0'>
+                <Carousel
+                  className='w-full border-b-2 border-[#DDDDDD]'
+                  opts={{
+                    duration: 10,
+                  }}
+                >
+                  <CarouselContent className='-ml-1'>
+                    {inspiration.items.map((item) => (
+                      <CarouselItem key={item.key} className='basis-auto pl-0'>
+                        <TabsTrigger
+                          key={item.key}
+                          value={item.title}
+                          className='rounded-none border-b-2 border-transparent px-4 py-2 text-[#6A6A6A] data-[state=active]:border-[#222222] data-[state=active]:bg-inherit data-[state=active]:text-[#222222] data-[state=active]:shadow-none'
+                        >
+                          {item.title}
+                        </TabsTrigger>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  {/* NOTE: Change arrow icon and hidden */}
+                  <CarouselPrevious className='-left-6 rounded-none border-none bg-transparent shadow-none' />
+                  <CarouselNext className='-right-6 rounded-none border-none bg-transparent shadow-none' />
+                </Carousel>
+              </TabsList>
+              {inspiration.items.map((tab) => (
+                <TabsContent key={tab.key} value={tab.title} className='mt-0 pt-8'>
+                  <ul className='grid grid-cols-2 gap-2 gap-y-6 lg:grid-cols-3 xl:grid-cols-6'>
+                    {tab.navLinks.map((item) => (
+                      <li key={item.key} className='cursor-pointer text-sm'>
+                        {/* TODO: Add "Show more" button */}
+                        <p className='line-clamp-1 font-medium'>{item.title}</p>
+                        <p className='line-clamp-1 text-[#6A6A6A]'>{item.description}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </TabsContent>
+              ))}
+            </Tabs>
+          </div>
+
+          <Separator className='h-[2px]' />
+
+          {/* Footer component */}
+          <FooterDefault />
+        </div>
+      </div>
     </div>
   );
 }

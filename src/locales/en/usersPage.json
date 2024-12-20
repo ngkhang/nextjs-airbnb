@@ -1,0 +1,447 @@
+{
+  "shared": {
+    "shortOverview": {
+      "typeUser": "Guest",
+      "items": [
+        {
+          "key": 0,
+          "title": "Reviews",
+          "description": "262"
+        },
+        {
+          "key": 1,
+          "title": "Rating",
+          "icon": "Star",
+          "description": "200"
+        },
+        {
+          "key": 2,
+          "title": "Years on Airbnb",
+          "description": "2"
+        }
+      ]
+    },
+    "confirmed": {
+      "title": "'s confirmed information",
+      "items": [
+        {
+          "key": 0,
+          "id": "name",
+          "title": "Identity"
+        },
+        {
+          "key": 1,
+          "id": "email",
+          "title": "Email address"
+        },
+        {
+          "key": 2,
+          "id": "phone",
+          "title": "Phone number"
+        }
+      ]
+    },
+    "accountSettings": {
+      "title": "Account",
+      "top": {
+        "id": "DASHBOARD",
+        "icon": "BadgeCheck",
+        "title": "My Account"
+      },
+      "middle": [
+        {
+          "key": 0,
+          "group": [
+            {
+              "key": 0,
+              "id": "PROFILE",
+              "title": "Personal info",
+              "icon": "CircleUserRound",
+              "disable": false
+            },
+            {
+              "key": 1,
+              "id": "RESERVATION_HISTORY",
+              "title": "Reservation History",
+              "icon": "CreditCard",
+              "disable": false
+            },
+            {
+              "key": 2,
+              "id": "ACCOUNT_SETTINGS",
+              "title": "Security",
+              "icon": "Settings",
+              "disable": false
+            }
+          ]
+        },
+        {
+          "key": 1,
+          "group": [
+            {
+              "key": 0,
+              "id": "INVITE",
+              "title": "Invite friends",
+              "icon": "",
+              "disable": true
+            },
+            {
+              "key": 1,
+              "id": "GLOBAL_PREFERENCES",
+              "title": "Global preferences",
+              "icon": "",
+              "disable": true
+            },
+            {
+              "key": 2,
+              "id": "HELP",
+              "title": "Help",
+              "icon": "",
+              "disable": true
+            }
+          ]
+        }
+      ],
+      "bottom": {
+        "id": "",
+        "title": "Log out",
+        "icon": "LogOut"
+      }
+    },
+    "report": {
+      "title": "Report this profile",
+      "url": "/"
+    }
+  },
+  "dashboard": {
+    "title": "About",
+    "publicInfo": {
+      "ask": [
+        {
+          "key": 0,
+          "icon": "GraduationCap",
+          "title": "Where I went to school",
+          "description": "Life University"
+        },
+        {
+          "key": 1,
+          "icon": "BriefcaseBusiness",
+          "title": "My work",
+          "description": "Home of Happiness"
+        },
+
+        {
+          "key": 2,
+          "icon": "Music",
+          "title": "Favorite song in high school",
+          "description": "Spice up your life"
+        },
+        {
+          "key": 3,
+          "icon": "Sparkles",
+          "title": "What makes my home unique",
+          "description": " my peaceful energy sending to my home"
+        },
+        {
+          "key": 4,
+          "icon": "PawPrint",
+          "title": "Pets",
+          "description": "dog"
+        },
+        {
+          "key": 5,
+          "icon": "Languages",
+          "title": "Speaks",
+          "description": "English and Vietnamese"
+        },
+        {
+          "key": 6,
+          "icon": "Heart",
+          "title": "I'm obsessed with",
+          "description": "my unique gift"
+        },
+        {
+          "key": 7,
+          "icon": "BookOpen",
+          "title": "My biography title",
+          "description": "Live a Happy Life!"
+        },
+        {
+          "key": 8,
+          "icon": "HandPlatter",
+          "title": "For guests, I always",
+          "description": "respectful"
+        },
+        {
+          "key": 9,
+          "icon": "Utensils",
+          "title": "What's for breakfast",
+          "description": "fruits and cereal"
+        }
+      ],
+      "about": "I like to use the word AMAZING to describe my clients. I am so excited we have reached 1000 reviews on 29th Aug this year!\n\nI am also a certified coach. I love what I do, I am thankful to my life, it is beautiful.\n\nOne part of my income from Airbnb and other work is dedicated to forest reservations and charity projects.\n\nBook with me today, have a vacation you never forget and let us help the world together!"
+    }
+  },
+  "profileInfo": {
+    "title": "Personal info",
+    "description": "The information you share will be used across Airbnb to help other guests and Hosts get to know you",
+    "fields": [
+      {
+        "key": 0,
+        "id": "name",
+        "title": "Full name",
+        "textEmpty": "Not provide"
+      },
+      {
+        "key": 1,
+        "id": "email",
+        "title": "Email",
+        "textEmpty": "Not provide"
+      },
+      {
+        "key": 2,
+        "id": "phone",
+        "title": "Phone numbers",
+        "textEmpty": "Not provide"
+      },
+      {
+        "key": 3,
+        "id": "birthday",
+        "title": "Date of birth",
+        "textEmpty": "Not provide"
+      },
+      {
+        "key": 4,
+        "id": "gender",
+        "title": "Gender",
+        "textEmpty": "Not provide"
+      }
+    ],
+    "subInfo": [
+      {
+        "key": 0,
+        "icon": "Shield",
+        "title": "Why isn't my info shown here?",
+        "description": "We're hiding some account details to protect your identity."
+      },
+      {
+        "key": 1,
+        "icon": "LockKeyhole",
+        "title": "Which details can be edited?",
+        "description": "Contact info and personal details can be edited. If this info was used to verify your identity, you'll need to get verified again the next time you book—or to continue hosting."
+      },
+      {
+        "key": 2,
+        "icon": "Eye",
+        "title": "What info is shared with others?",
+        "description": "Airbnb only releases contact information for Hosts and guests after a reservation is confirmed."
+      }
+    ]
+  },
+  "reservationHistory": {
+    "title": "Reservation History",
+    "description": ""
+  },
+  "accountSettings": {
+    "title": "Account Settings",
+    "description": "Manage your account settings and set e-mail preferences.",
+    "itemsSection": [
+      {
+        "key": 0,
+        "icon": "IdCard",
+        "title": "Personal info",
+        "isActive": true,
+        "url": "/users/account-settings/update-profile",
+        "description": "Provide personal details and how we can reach you"
+      },
+      {
+        "key": 1,
+        "icon": "ShieldCheck",
+        "title": "Login & security",
+        "isActive": true,
+        "url": "/users/account-settings/change-password",
+        "description": "Update your password and secure your account"
+      },
+      {
+        "key": 2,
+        "icon": "CreditCard",
+        "title": "Payments & payouts",
+        "isActive": false,
+        "url": "/",
+        "description": "Review payments, payouts, coupons, and gift cards"
+      },
+      {
+        "key": 3,
+        "icon": "StickyNote",
+        "title": "Taxes",
+        "isActive": false,
+        "url": "/",
+        "description": "Manage taxpayer information and tax documents"
+      },
+      {
+        "key": 4,
+        "icon": "Megaphone",
+        "title": "Notifications",
+        "isActive": false,
+        "url": "/",
+        "description": "Choose notification preferences and how you want to be contacted"
+      },
+      {
+        "key": 5,
+        "icon": "Eye",
+        "title": "Privacy & sharing",
+        "isActive": false,
+        "url": "/",
+        "description": "Manage your personal data, connected services, and data sharing settings"
+      },
+      {
+        "key": 6,
+        "icon": "Settings2",
+        "title": "Global preferences",
+        "isActive": false,
+        "url": "/",
+        "description": "Set your default language, currency, and timezone"
+      },
+      {
+        "key": 7,
+        "icon": "ChartNoAxesColumn",
+        "title": "Professional hosting tools",
+        "isActive": false,
+        "url": "/",
+        "description": "Get professional tools if you manage several properties on Airbnb"
+      },
+      {
+        "key": 8,
+        "icon": "Gift",
+        "title": "Referral credit & coupon",
+        "isActive": false,
+        "url": "/",
+        "description": "You have ₫0 referral credits and coupon. Learn more."
+      }
+    ],
+    "pages": {
+      "changePassword": {
+        "title": "Change password",
+        "description": "",
+        "formFields": [
+          {
+            "key": 0,
+            "id": "currentPassword",
+            "label": "Current password",
+            "input": {
+              "isHidden": false,
+              "require": true,
+              "placeholder": "",
+              "type": "password"
+            }
+          },
+          {
+            "key": 1,
+            "id": "newPassword",
+            "label": "New password",
+            "input": {
+              "isHidden": false,
+              "require": true,
+              "placeholder": "",
+              "type": "password"
+            }
+          },
+          {
+            "key": 2,
+            "id": "confirmPassword",
+            "label": "Confirm password",
+            "input": {
+              "isHidden": false,
+              "require": true,
+              "placeholder": "",
+              "type": "password"
+            }
+          }
+        ]
+      },
+      "updateProfile": {
+        "title": "Update profile",
+        "description": "",
+        "formFields": [
+          {
+            "key": 0,
+            "id": "avatar",
+            "label": "Avatar",
+            "input": {
+              "isHidden": true,
+              "require": false,
+              "placeholder": "",
+              "type": "file"
+            }
+          },
+          {
+            "key": 1,
+            "id": "id",
+            "label": "User Id",
+            "input": {
+              "isHidden": true,
+              "require": true,
+              "placeholder": "",
+              "type": "number"
+            }
+          },
+          {
+            "key": 2,
+            "id": "email",
+            "label": "Email Address",
+            "input": {
+              "isHidden": false,
+              "require": true,
+              "placeholder": "Enter your email",
+              "type": "email"
+            }
+          },
+          {
+            "key": 3,
+            "id": "name",
+            "label": "Full name",
+            "input": {
+              "isHidden": false,
+              "require": true,
+              "placeholder": "Enter your name",
+              "type": "text"
+            }
+          },
+          {
+            "key": 4,
+            "id": "phone",
+            "label": "Phone number",
+            "input": {
+              "isHidden": false,
+              "require": false,
+              "placeholder": "Enter your phone",
+              "type": "phone"
+            }
+          },
+          {
+            "key": 5,
+            "id": "birthday",
+            "label": "Date of birth",
+            "input": {
+              "isHidden": false,
+              "require": false,
+              "placeholder": "Enter your birthday",
+              "type": "date"
+            }
+          },
+          {
+            "key": 7,
+            "id": "gender",
+            "label": "Gender",
+            "input": {
+              "isHidden": false,
+              "require": false,
+              "placeholder": "Choose your gender",
+              "type": "select"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

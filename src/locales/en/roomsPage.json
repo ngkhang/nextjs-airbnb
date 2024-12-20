@@ -1,0 +1,52 @@
+{
+  "locationPage": {
+    "whereSleep": {
+      "title": "Where you'll sleep",
+      "items": [
+        {
+          "key": 0,
+          "title": "Bedroom 1",
+          "description": "1 queen bed, 1 single bed",
+          "image": "/assets/images/bedroom1.png"
+        },
+        {
+          "key": 1,
+          "title": "Bedroom 2",
+          "description": "2 queen beds, 1 single bed",
+          "image": "/assets/images/bedroom2.png"
+        }
+      ]
+    },
+    "whatOffers": {
+      "title": "What this place offers",
+      "items": [
+        {
+          "key": 0,
+          "title": "Ocean view",
+          "icon": ""
+        },
+        {
+          "key": 1,
+          "title": "Air conditioning",
+          "icon": "AirVent"
+        },
+        {
+          "key": 2,
+          "title": "Wifi",
+          "icon": "Wifi"
+        },
+        {
+          "key": 3,
+          "title": "Dedicated workspace",
+          "icon": "WavesLadder"
+        }
+      ]
+    },
+    "where": {
+      "title": "What this place offers"
+    },
+    "meetHost": {
+      "title": "Meet your Host"
+    }
+  }
+}

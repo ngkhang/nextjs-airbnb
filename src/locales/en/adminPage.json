@@ -1,0 +1,73 @@
+{
+  "shared": {
+    "sidebar": {
+      "navHeader": {
+        "title": "Airbnb",
+        "id": "DASHBOARD",
+        "description": "Admin Management",
+        "avatar": "/assets/logo/airbnb-symbol.svg"
+      },
+      "navMain": [
+        {
+          "key": 0,
+          "id": "USERS",
+          "title": "User",
+          "icon": "Users"
+        },
+        {
+          "key": 1,
+          "id": "ROOMS",
+          "title": "Room",
+          "icon": "MapPinHouse"
+        },
+        {
+          "key": 2,
+          "id": "LOCATIONS",
+          "title": "Location",
+          "icon": "MapPinned"
+        }
+      ]
+    },
+    "pageTitle": {
+      "dashboard": "Dashboard",
+      "users": "User Management",
+      "rooms": "Room Management",
+      "locations": "Location Management"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "cardOverview": [
+      {
+        "key": 0,
+        "id": "locations",
+        "title": "Total location",
+        "icon": "MapPinned"
+      },
+      {
+        "key": 1,
+        "id": "rooms",
+        "title": "Total Room",
+        "icon": "MapPinHouse"
+      },
+      {
+        "key": 2,
+        "id": "users",
+        "title": "Total User",
+        "icon": "Users"
+      },
+      {
+        "key": 3,
+        "id": "admins",
+        "title": "Total Admin",
+        "icon": "Shield"
+      }
+    ],
+    "overviewChart": {
+      "title": "Overview"
+    },
+    "listNewUser": {
+      "title": "Recent Users"
+    }
+  }
+}

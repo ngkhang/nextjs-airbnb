@@ -1,0 +1,723 @@
+{
+  "header": {
+    "logo": {
+      "url": "/",
+      "alt": "Airbnb"
+    },
+    "search": [
+      {
+        "key": 0,
+        "title": "Stays",
+        "active": true,
+        "items": {
+          "where": {
+            "id": "where",
+            "label": "Where",
+            "placeholder": "Search destinations",
+            "location": {
+              "title": "Search by location",
+              "description": "Choose places your search"
+            },
+            "region": {
+              "title": "Search by region",
+              "items": [
+                {
+                  "key": 0,
+                  "title": "I'm flexible",
+                  "image": "/assets/images/map-region/region.jpg"
+                },
+                {
+                  "key": 1,
+                  "title": "Europe",
+                  "image": "/assets/images/map-region/europe.jpg"
+                },
+                {
+                  "key": 2,
+                  "title": "South Korea",
+                  "image": "/assets/images/map-region/south-korea.jpg"
+                },
+                {
+                  "key": 3,
+                  "title": "United States",
+                  "image": "/assets/images/map-region/united-states.jpg"
+                },
+                {
+                  "key": 4,
+                  "title": "Thailand",
+                  "image": "/assets/images/map-region/thailand.jpg"
+                },
+                {
+                  "key": 5,
+                  "title": "Australia",
+                  "image": "/assets/images/map-region/australia.jpg"
+                }
+              ]
+            }
+          },
+          "when": {
+            "id": "when",
+            "label": "Check in - Check out",
+            "placeholder": "Add dates"
+          },
+          "who": {
+            "id": "who",
+            "label": "Who",
+            "placeholder": "Add guests",
+            "options": [
+              {
+                "key": 0,
+                "id": "adults",
+                "title": "Adults",
+                "description": "Ages 13 or above"
+              },
+              {
+                "key": 1,
+                "id": "children",
+                "title": "Children",
+                "description": "Ages 2 - 12"
+              },
+              {
+                "key": 2,
+                "id": "infants",
+                "title": "Infants",
+                "description": "Under 2"
+              },
+              {
+                "key": 3,
+                "id": "pets",
+                "title": "Pets",
+                "description": "Bringing a service animal?"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": 1,
+        "title": "Experiences",
+        "active": false
+      }
+    ],
+    "sub": {
+      "host": {
+        "title": "Airbnb your home",
+        "url": "/"
+      },
+      "lang": {
+        "title": "language",
+        "icon": "Global",
+        "url": "/"
+      },
+      "profile": {
+        "unLogin": {
+          "top": [
+            {
+              "key": 0,
+              "title": "Sign up",
+              "url": "/register"
+            },
+            {
+              "key": 1,
+              "title": "Log in",
+              "url": "/login"
+            }
+          ],
+          "bottom": [
+            {
+              "key": 0,
+              "title": "Gift cards",
+              "url": "/"
+            },
+            {
+              "key": 1,
+              "title": "Airbnb your home",
+              "url": "/"
+            },
+            {
+              "key": 2,
+              "title": "Host an experience",
+              "url": "/"
+            },
+            {
+              "key": 3,
+              "title": "Help Center",
+              "url": "/"
+            }
+          ]
+        },
+        "logged": {
+          "top": [
+            {
+              "key": 0,
+              "title": "Account",
+              "url": "/show"
+            }
+          ],
+          "bottom": [
+            {
+              "key": 0,
+              "title": "Gift cards",
+              "url": "/"
+            },
+            {
+              "key": 1,
+              "title": "Airbnb your home",
+              "url": "/"
+            },
+            {
+              "key": 2,
+              "title": "Host an experience",
+              "url": "/"
+            },
+            {
+              "key": 3,
+              "title": "Help Center",
+              "url": "/"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "categories": [
+    {
+      "key": 0,
+      "icon": "/assets/icons/icons.png",
+      "title": "Icons"
+    },
+    {
+      "key": 1,
+      "icon": "/assets/icons/rooms.jpg",
+      "title": "Rooms"
+    },
+    {
+      "key": 2,
+      "icon": "/assets/icons/amazing-views.jpg",
+      "title": "Amazing views"
+    },
+    {
+      "key": 3,
+      "icon": "/assets/icons/amazing-pools.jpg",
+      "title": "Amazing pools"
+    },
+    {
+      "key": 4,
+      "icon": "/assets/icons/earth-homes.jpg",
+      "title": "Earth homes"
+    },
+    {
+      "key": 5,
+      "icon": "/assets/icons/windmills.jpg",
+      "title": "Windmills"
+    },
+    {
+      "key": 6,
+      "icon": "/assets/icons/countryside.jpg",
+      "title": "Countryside"
+    },
+    {
+      "key": 7,
+      "icon": "/assets/icons/treehouses.jpg",
+      "title": "Treehouses"
+    },
+    {
+      "key": 8,
+      "icon": "/assets/icons/tiny-homes.jpg",
+      "title": "Tiny homes"
+    },
+    {
+      "key": 9,
+      "icon": "/assets/icons/mansions.jpg",
+      "title": "Mansions"
+    },
+    {
+      "key": 10,
+      "icon": "/assets/icons/trending.jpg",
+      "title": "Trending"
+    },
+    {
+      "key": 11,
+      "icon": "/assets/icons/cabins.jpg",
+      "title": "Cabins"
+    },
+    {
+      "key": 12,
+      "icon": "/assets/icons/lakefront.jpg",
+      "title": "Lakefront"
+    },
+    {
+      "key": 13,
+      "icon": "/assets/icons/grand-pianos.jpg",
+      "title": "Grand pianos"
+    },
+    {
+      "key": 14,
+      "icon": "/assets/icons/omg!.jpg",
+      "title": "OMG!"
+    },
+    {
+      "key": 15,
+      "icon": "/assets/icons/islands.jpg",
+      "title": "Islands"
+    },
+    {
+      "key": 16,
+      "icon": "/assets/icons/a-frames.jpg",
+      "title": "A-frames"
+    },
+    {
+      "key": 17,
+      "icon": "/assets/icons/castles.jpg",
+      "title": "Castles"
+    },
+    {
+      "key": 18,
+      "icon": "/assets/icons/luxe.jpg",
+      "title": "Luxe"
+    },
+    {
+      "key": 19,
+      "icon": "/assets/icons/beachfront.jpg",
+      "title": "Beachfront"
+    },
+    {
+      "key": 20,
+      "icon": "/assets/icons/containers.png",
+      "title": "Containers"
+    },
+    {
+      "key": 21,
+      "icon": "/assets/icons/hanoks.jpg",
+      "title": "Hanoks"
+    },
+    {
+      "key": 22,
+      "icon": "/assets/icons/shepherd's-huts.jpg",
+      "title": "Shepherd's huts"
+    },
+    {
+      "key": 23,
+      "icon": "/assets/icons/farms.jpg",
+      "title": "Farms"
+    },
+    {
+      "key": 24,
+      "icon": "/assets/icons/beach.jpg",
+      "title": "Beach"
+    },
+    {
+      "key": 25,
+      "icon": "/assets/icons/design.jpg",
+      "title": "Design"
+    },
+    {
+      "key": 26,
+      "icon": "/assets/icons/domes.jpg",
+      "title": "Domes"
+    },
+    {
+      "key": 27,
+      "icon": "/assets/icons/arctic.jpg",
+      "title": "Arctic"
+    },
+    {
+      "key": 28,
+      "icon": "/assets/icons/caves.jpg",
+      "title": "Caves"
+    },
+    {
+      "key": 29,
+      "icon": "/assets/icons/dammusi.jpg",
+      "title": "Dammusi"
+    },
+    {
+      "key": 30,
+      "icon": "/assets/icons/chef's-kitchens.jpg",
+      "title": "Chef's kitchens"
+    },
+    {
+      "key": 31,
+      "icon": "/assets/icons/ski-in-out.jpg",
+      "title": "Ski-in/out"
+    },
+    {
+      "key": 32,
+      "icon": "/assets/icons/creative-spaces.jpg",
+      "title": "Creative spaces"
+    },
+    {
+      "key": 33,
+      "icon": "/assets/icons/ryokans.jpg",
+      "title": "Ryokans"
+    },
+    {
+      "key": 34,
+      "icon": "/assets/icons/golfing.jpg",
+      "title": "Golfing"
+    },
+    {
+      "key": 35,
+      "icon": "/assets/icons/play.jpg",
+      "title": "Play"
+    },
+    {
+      "key": 36,
+      "icon": "/assets/icons/barns.jpg",
+      "title": "Barns"
+    },
+    {
+      "key": 37,
+      "icon": "/assets/icons/off-the-grid.jpg",
+      "title": "Off-the-grid"
+    },
+    {
+      "key": 38,
+      "icon": "/assets/icons/minsus.jpg",
+      "title": "Minsus"
+    },
+    {
+      "key": 39,
+      "icon": "/assets/icons/tropical.jpg",
+      "title": "Tropical"
+    },
+    {
+      "key": 40,
+      "icon": "/assets/icons/vineyards.jpg",
+      "title": "Vineyards"
+    },
+    {
+      "key": 41,
+      "icon": "/assets/icons/new.jpg",
+      "title": "New"
+    },
+    {
+      "key": 42,
+      "icon": "/assets/icons/top-cities.jpg",
+      "title": "Top cities"
+    },
+    {
+      "key": 43,
+      "icon": "/assets/icons/camping.jpg",
+      "title": "Camping"
+    },
+    {
+      "key": 44,
+      "icon": "/assets/icons/national-parks.jpg",
+      "title": "National parks"
+    },
+    {
+      "key": 45,
+      "icon": "/assets/icons/camper-vans.jpg",
+      "title": "Camper vans"
+    },
+    {
+      "key": 46,
+      "icon": "/assets/icons/surfing.jpg",
+      "title": "Surfing"
+    },
+    {
+      "key": 47,
+      "icon": "/assets/icons/bed-&-breakfasts.jpg",
+      "title": "Bed & breakfasts"
+    },
+    {
+      "key": 48,
+      "icon": "/assets/icons/historical-homes.jpg",
+      "title": "Historical homes"
+    },
+    {
+      "key": 49,
+      "icon": "/assets/icons/skiing.jpg",
+      "title": "Skiing"
+    },
+    {
+      "key": 50,
+      "icon": "/assets/icons/top-of-the-world.jpg",
+      "title": "Top of the world"
+    },
+    {
+      "key": 51,
+      "icon": "/assets/icons/cycladic-homes.jpg",
+      "title": "Cycladic homes"
+    },
+    {
+      "key": 52,
+      "icon": "/assets/icons/casas-particulares.jpg",
+      "title": "Casas particulares"
+    },
+    {
+      "key": 53,
+      "icon": "/assets/icons/towers.jpg",
+      "title": "Towers"
+    },
+    {
+      "key": 54,
+      "icon": "/assets/icons/yurts.jpg",
+      "title": "Yurts"
+    },
+    {
+      "key": 55,
+      "icon": "/assets/icons/desert.jpg",
+      "title": "Desert"
+    },
+    {
+      "key": 56,
+      "icon": "/assets/icons/boats.jpg",
+      "title": "Boats"
+    },
+    {
+      "key": 57,
+      "icon": "/assets/icons/adapted.jpg",
+      "title": "Adapted"
+    },
+    {
+      "key": 58,
+      "icon": "/assets/icons/houseboats.jpg",
+      "title": "Houseboats"
+    },
+    {
+      "key": 59,
+      "icon": "/assets/icons/trulli.jpg",
+      "title": "Trulli"
+    },
+    {
+      "key": 60,
+      "icon": "/assets/icons/riads.jpg",
+      "title": "Riads"
+    },
+    {
+      "key": 61,
+      "icon": "/assets/icons/lake.jpg",
+      "title": "Lake"
+    }
+  ],
+  "footer": {
+    "main": [
+      {
+        "key": 0,
+        "title": "Support",
+        "items": [
+          {
+            "key": 0,
+            "title": "Help Center",
+            "url": "/"
+          },
+          {
+            "key": 1,
+            "title": "AirCover",
+            "url": "/"
+          },
+          {
+            "key": 2,
+            "title": "Anti-discrimination",
+            "url": "/"
+          },
+          {
+            "key": 3,
+            "title": "Disability support",
+            "url": "/"
+          },
+          {
+            "key": 4,
+            "title": "Cancellation options",
+            "url": "/"
+          },
+          {
+            "key": 5,
+            "title": "Report neighborhood concern",
+            "url": "/"
+          }
+        ]
+      },
+      {
+        "key": 1,
+        "title": "Hosting",
+        "items": [
+          {
+            "key": 0,
+            "title": "Airbnb your home",
+            "url": "/"
+          },
+          {
+            "key": 1,
+            "title": "AirCover for Hosts",
+            "url": "/"
+          },
+          {
+            "key": 2,
+            "title": "Hosting resources",
+            "url": "/"
+          },
+          {
+            "key": 3,
+            "title": "Community forum",
+            "url": "/"
+          },
+          {
+            "key": 4,
+            "title": "Hosting responsibly",
+            "url": "/"
+          },
+          {
+            "key": 5,
+            "title": "Airbnb-friendly apartments",
+            "url": "/"
+          },
+          {
+            "key": 6,
+            "title": "Join a free Hosting class",
+            "url": "/"
+          },
+          {
+            "key": 7,
+            "title": "Find a co-host",
+            "url": "/"
+          }
+        ]
+      },
+      {
+        "key": 2,
+        "title": "Airbnb",
+        "items": [
+          {
+            "key": 0,
+            "title": "Newsroom",
+            "url": "/"
+          },
+          {
+            "key": 1,
+            "title": "New features",
+            "url": "/"
+          },
+          {
+            "key": 2,
+            "title": "Careers",
+            "url": "/"
+          },
+          {
+            "key": 3,
+            "title": "Investors",
+            "url": "/"
+          },
+          {
+            "key": 4,
+            "title": "Gift cards",
+            "url": "/"
+          },
+          {
+            "key": 5,
+            "title": "Airbnb.org emergency stays",
+            "url": "/"
+          }
+        ]
+      }
+    ],
+    "sub": {
+      "social": [
+        {
+          "key": 0,
+          "title": "Facebook",
+          "icon": "Facebook"
+        },
+        {
+          "key": 1,
+          "title": "x",
+          "icon": "X"
+        },
+        {
+          "key": 2,
+          "title": "Instagram",
+          "icon": "Instagram"
+        }
+      ],
+      "copyright": "2024 Airbnb, Inc.",
+      "others": [
+        {
+          "key": 0,
+          "title": "Terms"
+        },
+        {
+          "key": 1,
+          "title": "Sitemap"
+        },
+        {
+          "key": 2,
+          "title": "Privacy"
+        },
+        {
+          "key": 3,
+          "title": "Your Privacy Choices"
+        }
+      ]
+    }
+  },
+  "infoRooms": [
+    {
+      "key": 0,
+      "id": "khach",
+      "title": "Guest"
+    },
+    {
+      "key": 1,
+      "id": "phongNgu",
+      "title": "Bedroom"
+    },
+    {
+      "key": 2,
+      "id": "giuong",
+      "title": "Bed"
+    },
+    {
+      "key": 3,
+      "id": "phongTam",
+      "title": "Bathroom"
+    }
+  ],
+  "equipments": [
+    {
+      "key": 0,
+      "id": "mayGiat",
+      "title": "Máy giặt"
+    },
+    {
+      "key": 0,
+      "id": "banLa",
+      "title": "Bàn là"
+    },
+    {
+      "key": 0,
+      "id": "tivi",
+      "title": "Tivi"
+    },
+    {
+      "key": 0,
+      "id": "dieuHoa",
+      "title": "Điều hòa"
+    },
+    {
+      "key": 0,
+      "id": "wifi",
+      "title": "Wifi"
+    },
+    {
+      "key": 0,
+      "id": "bep",
+      "title": "Bếp"
+    },
+    {
+      "key": 0,
+      "id": "doXe",
+      "title": "Đỗ xe"
+    },
+    {
+      "key": 0,
+      "id": "hoBoi",
+      "title": "Hồ bơi"
+    },
+    {
+      "key": 0,
+      "id": "banUi",
+      "title": "Bàn ủi"
+    }
+  ]
+}

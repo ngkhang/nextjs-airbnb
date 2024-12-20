@@ -1,0 +1,13 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.fixAll.ts": "always",
+  },
+  "prettier.endOfLine": "crlf",
+  "files.eol": "\r\n",
+  "files.associations": {
+    "*.css": "tailwindcss",
+  },
+}
