@@ -21,8 +21,8 @@ export const defaultColumns: ColumnDef<Booking>[] = [
     accessorKey: 'maPhong',
     header: 'Room code',
     cell: ({ row }) => (
-      <Link className='hover:text-muted-foreground hover:underline' href={ROUTES.ROOM.DETAIL(row.original.id)}>
-        {row.original.id}
+      <Link className='hover:text-muted-foreground hover:underline' href={ROUTES.ROOM.DETAIL(row.original.maPhong)}>
+        {row.original.maPhong}
       </Link>
     ),
   },
