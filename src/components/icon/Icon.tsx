@@ -52,7 +52,14 @@ import {
   MapPinHouse,
   MapPinned,
   Ellipsis,
+  ImageOff,
+  CalendarIcon,
+  Waves,
+  Wifi,
+  AirVent,
+  ChevronDown,
 } from 'lucide-react';
+
 import type { LucideProps } from 'lucide-react';
 
 const IconsRegistry = {
@@ -109,6 +116,12 @@ const IconsRegistry = {
   MapPinHouse,
   MapPinned,
   Ellipsis,
+  ImageOff,
+  CalendarIcon,
+  Waves,
+  Wifi,
+  AirVent,
+  ChevronDown,
 } as const;
 
 export type IconName = keyof typeof IconsRegistry;

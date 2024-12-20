@@ -19,6 +19,8 @@ import { DataTablePagination } from '@/components/table/data-table-pagination';
 import { Button } from '@/components/ui/button';
 import { DataTableViewOptions } from '@/components/table/data-table-view-options';
 import LocationType from '@/types/location';
+import locationService from '@/services/location.service';
+import DrawerDialog from '@/components/custom/DrawerDialog';
 
 const filter = {
   key: 'tenViTri',
@@ -35,101 +37,8 @@ export default function ManagementLocationPage() {
   });
   useEffect(() => {
     async function getData() {
-      // Fetch data from your API here.
-      const res = [
-        {
-          id: 1,
-          tenViTri: 'Quận 1',
-          tinhThanh: 'Hồ Chí Minh',
-          quocGia: 'Việt Nam',
-          hinhAnh: 'https://airbnbnew.cybersoft.edu.vn/images/vt1.jpg',
-        },
-        {
-          id: 2,
-          tenViTri: 'Cái Răng',
-          tinhThanh: 'Cần Thơ',
-          quocGia: 'Việt Nam',
-          hinhAnh: 'https://airbnbnew.cybersoft.edu.vn/images/vt2.jpg',
-        },
-        {
-          id: 3,
-          tenViTri: 'Hòn Rùa',
-          tinhThanh: 'Nha Trang',
-          quocGia: 'Việt Nam',
-          hinhAnh: 'https://airbnbnew.cybersoft.edu.vn/images/vt3.jpg',
-        },
-        {
-          id: 4,
-          tenViTri: 'Hoàn Kiếm',
-          tinhThanh: 'Hà Nội',
-          quocGia: 'Việt Nam',
-          hinhAnh: 'https://airbnbnew.cybersoft.edu.vn/images/vt4.jpg',
-        },
-        {
-          id: 5,
-          tenViTri: 'Hòn Tằm',
-          tinhThanh: 'Phú Quốc',
-          quocGia: 'Việt Nam',
-          hinhAnh: 'https://airbnbnew.cybersoft.edu.vn/images/vt5.jpg',
-        },
-        {
-          id: 6,
-          tenViTri: 'Hải Châu',
-          tinhThanh: 'Đà Nẵng',
-          quocGia: 'Việt Nam',
-          hinhAnh: 'https://airbnbnew.cybersoft.edu.vn/images/vt6.jpg',
-        },
-        {
-          id: 7,
-          tenViTri: 'Langbiang',
-          tinhThanh: 'Đà Lạt',
-          quocGia: 'Việt Nam',
-          hinhAnh: 'https://airbnbnew.cybersoft.edu.vn/images/vt7.jpg',
-        },
-        {
-          id: 8,
-          tenViTri: 'Mũi Né',
-          tinhThanh: 'Phan Thiết',
-          quocGia: 'Việt Nam',
-          hinhAnh: 'https://airbnbnew.cybersoft.edu.vn/images/vt8.jpg',
-        },
-        {
-          id: 3440,
-          tenViTri: 'Huyện Tân Yên',
-          tinhThanh: 'Bắc Giang',
-          quocGia: 'Việt Nam',
-          hinhAnh: 'https://airbnbnew.cybersoft.edu.vn/avatar/22-10-2024-02-07-11-13.jpg',
-        },
-        {
-          id: 3441,
-          tenViTri: 'Huyện Long Điền',
-          tinhThanh: 'Bà Rịa - Vũng Tàu',
-          quocGia: 'Việt Nam',
-          hinhAnh: 'https://cdn3.ivivu.com/2022/09/T%E1%BB%95ng-quan-du-l%E1%BB%8Bch-V%C5%A9ng-T%C3%A0u-ivivu.jpg',
-        },
-        {
-          id: 3443,
-          tenViTri: 'Thành phố Bắc Kạn',
-          tinhThanh: 'Bắc Kạn',
-          quocGia: 'Việt Nam',
-          hinhAnh: 'https://airbnbnew.cybersoft.edu.vn/images/vt1.jpg',
-        },
-        {
-          id: 3445,
-          tenViTri: 'Bùi Viện',
-          tinhThanh: 'Hồ Chí Minh',
-          quocGia: 'Việt Nam',
-          hinhAnh: 'https://airbnbnew.cybersoft.edu.vn/avatar/24-10-2024-07-21-32-capture.jpg',
-        },
-        {
-          id: 3446,
-          tenViTri: 'Gành Đá Đĩa',
-          tinhThanh: 'Phú Yên',
-          quocGia: 'Việt Nam',
-          hinhAnh: 'https://airbnbnew.cybersoft.edu.vn/avatar/24-10-2024-07-26-11-capture1.jpg',
-        },
-      ];
-      setData(res);
+      const res = await locationService.getAllLocation();
+      setData(res.content);
     }
 
     getData();
@@ -160,10 +69,13 @@ export default function ManagementLocationPage() {
           className='max-w-sm'
         />
         <div className='grid grid-flow-col gap-2'>
-          {/* TODO: Add new location */}
-          <Button type='button' className='bg-chart-2 text-white hover:bg-chart-2/75'>
-            Add new location
-          </Button>
+          <DrawerDialog
+            title='New room'
+            button={{ title: ' Add new location', className: 'bg-chart-2 text-white hover:bg-chart-2/75' }}
+          >
+            {/* TODO: form add new location */}
+            <p>Children</p>
+          </DrawerDialog>
           <DataTableViewOptions table={table} />
         </div>
       </div>

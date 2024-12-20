@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { RegisterSchema } from './auth.schema';
 
 const PasswordSchema = z
   .string({ message: 'This is required field' })
@@ -21,14 +22,18 @@ export const UpdatePasswordSchema = z
 
 export interface UpdatePassword extends z.infer<typeof UpdatePasswordSchema> {}
 
-export const UpdateProfileSchema = z.object({
-  id: z.string(),
-  email: z.string(),
-  name: z.string(),
+export const UpdateProfileSchema = RegisterSchema.extend({
+  id: z.number(),
   phone: z.string().optional(),
   birthday: z.coerce.date().optional(),
-  gender: z.string().optional().default('male'),
-  avatar: z.string().optional(),
+  gender: z.string().optional(),
+  password: z.string().optional(),
 });
 
 export interface UpdateProfileType extends z.infer<typeof UpdateProfileSchema> {}
+
+export const UploadAvatarSchema = z.object({
+  avatar: z.union([z.string(), z.instanceof(File)]).optional(),
+});
+
+export interface UploadAvatarType extends z.infer<typeof UploadAvatarSchema> {}

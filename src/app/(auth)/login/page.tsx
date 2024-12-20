@@ -47,8 +47,8 @@ const LoginPage = () => {
 
   const onSubmit = async (data: LogInType) => {
     try {
-      const result = await authService.login(data);
-      if (typeof result.content !== 'string') setUserLogin(result.content);
+      const res = await authService.login(data);
+      setUserLogin(res.content);
 
       toast.success(`Login successful`, {
         onClose: () => {

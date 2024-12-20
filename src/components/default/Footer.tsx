@@ -3,13 +3,13 @@ import { Separator } from '@/components/ui/separator';
 import { defaultContent } from '@/lib/staticContent';
 import { cn } from '@/lib/utils';
 
-const { Footer } = defaultContent.commonContent;
+const { footer } = defaultContent.commonContent;
 
-const FooterDefault = () => (
+const footerDefault = () => (
   <div>
     {/* Main Footer */}
     <div className='grid lg:grid-cols-3 lg:gap-2'>
-      {Footer.main.map(({ title, key, items }) => (
+      {footer.main.map(({ title, key, items }) => (
         <div key={key} className='text-sm'>
           <div className='py-6 text-sm xl:py-12'>
             <h3 className='mb-3 font-bold'>{title}</h3>
@@ -43,7 +43,7 @@ const FooterDefault = () => (
             </div>
           </div>
           <div className='hidden items-center md:flex'>
-            {Footer.sub.social.map((item) => (
+            {footer.sub.social.map((item) => (
               <Icon
                 className='ml-2 size-6 cursor-pointer hover:underline'
                 name={item.icon as IconName}
@@ -53,13 +53,13 @@ const FooterDefault = () => (
           </div>
         </div>
         <div className='flex-col flex-wrap items-center lg:flex xl:order-1 xl:flex-row'>
-          <p>&copy; {Footer.sub.copyright}</p>
+          <p>&copy; {footer.sub.copyright}</p>
           <ul className='flex flex-wrap'>
-            {Footer.sub.others.map((item) => (
+            {footer.sub.others.map((item) => (
               <div key={item.key} className='flex items-center'>
                 <span className={cn('px-2 py-1 text-lg', item.key === 0 && 'hidden xl:block')}>·</span>
                 <li className='cursor-pointer hover:underline'>{item.title}</li>
-                <div className={cn(Footer.sub.others.length - 1 !== item.key && 'hidden', 'ml-2')}>
+                <div className={cn(footer.sub.others.length - 1 !== item.key && 'hidden', 'ml-2')}>
                   <Icon name='Privacy' />
                 </div>
               </div>
@@ -71,4 +71,4 @@ const FooterDefault = () => (
   </div>
 );
 
-export default FooterDefault;
+export default footerDefault;

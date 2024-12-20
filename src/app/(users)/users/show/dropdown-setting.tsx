@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import type { DropdownMenuContentProps } from '@radix-ui/react-dropdown-menu';
+import { useRouter } from 'next/navigation';
 import Icon, { IconName } from '@/components/icon/Icon';
 import { Button } from '@/components/ui/button';
 import {
@@ -12,6 +15,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import ROUTES, { RoutesUser } from '@/utils/constants/routes';
+import { User } from '@/types/user.type';
+import authService from '@/services/auth.service';
 
 interface ItemMenu {
   icon: string;
@@ -33,9 +38,16 @@ interface Props extends DropdownMenuContentProps {
     }[];
     bottom: ItemMenu;
   };
+  user: User;
 }
 
-export function DropdownSettingsUser({ itemsSetting, ...props }: Props) {
+export function DropdownSettingsUser({ itemsSetting, user, ...props }: Props) {
+  const router = useRouter();
+  const handleLogout = async () => {
+    await authService.logout();
+    router.push(ROUTES.HOME.ROOT, { scroll: true });
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -47,7 +59,7 @@ export function DropdownSettingsUser({ itemsSetting, ...props }: Props) {
         <DropdownMenuLabel>
           <Link
             className='flex items-center gap-2 py-1'
-            href={ROUTES.USER[itemsSetting.top.id as RoutesUser] + '123' || '/'}
+            href={`${ROUTES.USER[itemsSetting.top.id as RoutesUser]}/${user.id}` || '/'}
           >
             <Icon size={18} name={itemsSetting.top.icon as IconName} />
             <span className='flex-1'>{itemsSetting.top.title}</span>
@@ -59,7 +71,10 @@ export function DropdownSettingsUser({ itemsSetting, ...props }: Props) {
             <DropdownMenuGroup key={key}>
               {group.map((menuItem) => (
                 <DropdownMenuItem className='focus:text-inherit' key={menuItem.key} disabled={menuItem.disable}>
-                  <Link className='flex items-center gap-2 py-1' href={ROUTES.USER[menuItem.id as RoutesUser] || '/'}>
+                  <Link
+                    className='flex w-full items-center gap-2 py-1'
+                    href={ROUTES.USER[menuItem.id as RoutesUser] || '/'}
+                  >
                     {menuItem.icon && <Icon size={18} name={menuItem.icon as IconName} />}
                     <span className='flex-1'>{menuItem.title}</span>
                   </Link>
@@ -69,14 +84,9 @@ export function DropdownSettingsUser({ itemsSetting, ...props }: Props) {
             <DropdownMenuSeparator />
           </>
         ))}
-        <DropdownMenuItem>
-          <Link
-            className='flex items-center gap-2 py-1'
-            href={ROUTES.USER[itemsSetting.bottom.id as RoutesUser] || '/'}
-          >
-            <Icon size={18} name={itemsSetting.bottom.icon as IconName} />
-            <span className='flex-1'>{itemsSetting.bottom.title}</span>
-          </Link>
+        <DropdownMenuItem onClick={handleLogout} className='flex cursor-pointer items-center gap-2 py-2'>
+          <Icon size={18} name={itemsSetting.bottom.icon as IconName} />
+          <span className='flex-1'>{itemsSetting.bottom.title}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

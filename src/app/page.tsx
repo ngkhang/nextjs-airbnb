@@ -1,35 +1,30 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import isUrl from 'is-url';
 import { defaultContent } from '@/lib/staticContent';
-import fakeDataHome from '@/fakeData/fakeHome.json';
-import { cn, formatCurrency } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import FooterDefault from '@/components/default/Footer';
 import { Separator } from '@/components/ui/separator';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import Icon from '@/components/icon/Icons';
 import UserHeader from '@/components/layout/user/user-header/UserHeader';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
+import roomService from '@/services/room.service';
+import locationService from '@/services/location.service';
+// FIXME: Icon component
+import Icon from '@/components/icon/Icon';
+import ROUTES from '@/utils/constants/routes';
+import CardRoom from '@/components/custom/CardRoom';
+const { inspiration, explore } = defaultContent.homeContent;
+const { categories } = defaultContent.commonContent;
 
-const { PropertiesData, ExploreData } = fakeDataHome;
-const { homeContent, commonContent } = defaultContent;
-const { Inspiration, Explore } = homeContent;
-const { Categories } = commonContent;
+export default async function Home() {
+  const rooms = await roomService.getAllRooms();
 
-const keysLocal = ['tenViTri', 'tinhThanh', 'quocGia'] as const;
+  const locations = await locationService.getAllLocation();
 
-const infoHome = [
-  { key: 'khach', title: 'khách' },
-  { key: 'phongNgu', title: 'phòng ngủ' },
-  { key: 'giuong', title: 'giường' },
-  { key: 'phongTam', title: 'phòng tắm' },
-];
-
-const locationInfo = (id: number) => ExploreData.filter((item) => item.id === id);
-
-export default function Home() {
   return (
     <div className=''>
       {/* Header section */}
@@ -43,7 +38,7 @@ export default function Home() {
         <section className='grid grid-flow-col grid-cols-5 shadow-xl md:container xl:grid-cols-6'>
           <Carousel className='col-span-full md:col-span-2 lg:col-span-3 xl:col-span-4' opts={{ duration: 25 }}>
             <CarouselContent className='mx-2'>
-              {Categories.map((item) => (
+              {categories.map((item) => (
                 <CarouselItem
                   key={item.key}
                   data-state='active'
@@ -67,7 +62,7 @@ export default function Home() {
 
           <div className='hidden justify-end space-x-4 py-2 text-sm font-medium md:col-span-3 md:flex lg:col-span-2'>
             <Link href='/' className='flex items-center space-x-2 rounded-2xl border px-4 py-0'>
-              <Icon name='Adjust' size={20} />
+              <Icon name='SlidersHorizontal' />
               <span>Filter</span>
             </Link>
 
@@ -84,92 +79,49 @@ export default function Home() {
       {/* List properties */}
       <section className='container mb-8 mt-6'>
         <div className='grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-10 xl:grid-cols-4 xl:gap-8 3xl:grid-cols-5 4xl:grid-cols-6'>
-          {/* TODO: Call API */}
-          {PropertiesData.map((item) => (
-            <Card key={item.id} className={cn('w-full rounded-none border-none p-0 shadow-none')}>
-              {/* Card Header */}
-              <CardHeader
-                className='relative mb-3 size-56 w-full rounded-2xl bg-left-bottom bg-no-repeat p-0 hover:opacity-80 lg:size-64 lg:w-full'
-                style={{ backgroundImage: `url(${item.hinhAnh})` }}
-              >
-                <Icon
-                  name='Heart'
-                  className='absolute right-3 top-3 size-5 fill-black/50 stroke-white stroke-[1.5rem] hover:scale-125'
-                />
-              </CardHeader>
-
-              {/* Card content */}
-              <CardContent className='p-0'>
-                <div className='mb-2 flex items-center justify-between text-[#6A6A6A]'>
-                  <p className='mr-2 truncate font-semibold capitalize text-[#222222]'>{item.tenPhong}</p>
-                  <div className='flex items-center'>
-                    <Icon name='Star' className='mr-1' />
-                    <span>4.7</span>
-                  </div>
-                </div>
-
-                <div className='mb-1 flex items-stretch text-sm text-[#6A6A6A]'>
-                  {keysLocal.map((location, index) => (
-                    <div key={index} className='flex items-center'>
-                      {locationInfo(item.maViTri) && <span>{locationInfo(item.maViTri)[0][location]}</span>}
-
-                      {keysLocal.length - 1 !== index && (
-                        <Separator orientation='vertical' className='mx-1 bg-[#6A6A6A]' />
-                      )}
-                    </div>
-                  ))}
-                </div>
-
-                <div className='mb-2 grid grid-cols-2 grid-rows-2 gap-1 text-sm text-[#6A6A6A]'>
-                  {infoHome.map((info, index) => (
-                    <span key={index}>{`· ${item[info.key as keyof typeof item]} ${info.title}`}</span>
-                  ))}
-                </div>
-                <p className='mb-2 hidden truncate text-sm'>{item.moTa}</p>
-
-                <div className='flex items-center text-sm'>
-                  <Icon className='size-5' name='Vnd' />
-                  <span className='mr-1 text-lg font-semibold'>{formatCurrency(+item.giaTien)}</span>
-                  <span>đêm</span>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          {rooms.content &&
+            rooms.content.map((room) => <CardRoom key={room.id} locations={locations.content} room={room} />)}
         </div>
       </section>
 
       {/* Explore section */}
       <section className='container mb-8 mt-6'>
         <div className='mb-4'>
-          <h3 className='mb-2 text-[22px] font-bold text-[#222222]'>{Explore.title}</h3>
-          <p className='text-base text-[#6A6A6A]'>{Explore.description}</p>
+          <h3 className='mb-2 text-3xl font-bold text-[#222222]'>{explore.title}</h3>
+          <p className='text-base text-[#6A6A6A]'>{explore.description}</p>
         </div>
 
         <div className='grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-5 xl:grid-cols-6'>
-          {/* TODO: Call API */}
-          {ExploreData.map((item) => (
-            <Card
-              key={item.id}
-              className='grid h-full w-full grid-cols-5 justify-items-start gap-2 border-none shadow-none'
-            >
-              <CardHeader className='col-span-2 col-start-1 p-0'>
-                <Image
-                  width={100}
-                  height={100}
-                  alt={item.tenViTri}
-                  className='aspect-square h-full w-full rounded-2xl'
-                  quality={75}
-                  src={item.hinhAnh}
-                />
-              </CardHeader>
-              <CardContent className='col-span-3 col-start-3 p-0 center'>
-                <div className='text-sm'>
-                  <p className='font-semibold'>{item.tenViTri}</p>
-                  <p className='text-xs text-[#6A6A6A]'>{`${item.tinhThanh}, ${item.quocGia}`}</p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          {locations.content &&
+            locations.content.map((item) => (
+              <Link key={item.id} href={ROUTES.ROOM.LOCATION(item.id)}>
+                <Card className='grid h-full w-full grid-cols-5 justify-items-start gap-2 border-none shadow-none'>
+                  <CardHeader className='col-span-2 col-start-1 overflow-hidden rounded-2xl p-0'>
+                    {isUrl(item.hinhAnh) ? (
+                      <Image
+                        loading='lazy'
+                        width={50}
+                        height={50}
+                        src={item.hinhAnh}
+                        alt={item.tenViTri}
+                        className='aspect-square size-full rounded-2xl hover:scale-110'
+                        quality={75}
+                      />
+                    ) : (
+                      <div className='aspect-square size-full rounded-2xl bg-[#EEEEEE] center'>
+                        <Icon name='ImageOff' size='30' />
+                      </div>
+                    )}
+                  </CardHeader>
+                  <CardContent className='col-span-3 col-start-3 p-0 center'>
+                    <div className='text-sm'>
+                      <p className='font-semibold'>{item.tenViTri}</p>
+                      <p className='text-xs text-[#6A6A6A]'>{`${item.tinhThanh}, ${item.quocGia}`}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
         </div>
       </section>
 
@@ -177,8 +129,8 @@ export default function Home() {
         <div className='col-span-4 col-start-2'>
           {/* Inspiration section */}
           <div className='py-10'>
-            <h3 className='mb-2 text-[22px] font-bold text-[#222222]'>{Inspiration.title}</h3>
-            <Tabs defaultValue={Inspiration.items[0].title} className=''>
+            <h3 className='mb-2 text-3xl font-bold text-[#222222]'>{inspiration.title}</h3>
+            <Tabs defaultValue={inspiration.items[0].title} className=''>
               <TabsList className='h-fit w-full rounded-none bg-inherit px-0'>
                 <Carousel
                   className='w-full border-b-2 border-[#DDDDDD]'
@@ -187,7 +139,7 @@ export default function Home() {
                   }}
                 >
                   <CarouselContent className='-ml-1'>
-                    {Inspiration.items.map((item) => (
+                    {inspiration.items.map((item) => (
                       <CarouselItem key={item.key} className='basis-auto pl-0'>
                         <TabsTrigger
                           key={item.key}
@@ -199,12 +151,12 @@ export default function Home() {
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  {/* TODO: Change arrow icon and hidden */}
+                  {/* NOTE: Change arrow icon and hidden */}
                   <CarouselPrevious className='-left-6 rounded-none border-none bg-transparent shadow-none' />
                   <CarouselNext className='-right-6 rounded-none border-none bg-transparent shadow-none' />
                 </Carousel>
               </TabsList>
-              {Inspiration.items.map((tab) => (
+              {inspiration.items.map((tab) => (
                 <TabsContent key={tab.key} value={tab.title} className='mt-0 pt-8'>
                   <ul className='grid grid-cols-2 gap-2 gap-y-6 lg:grid-cols-3 xl:grid-cols-6'>
                     {tab.navLinks.map((item) => (

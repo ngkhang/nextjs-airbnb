@@ -1,12 +1,11 @@
 'use client';
 
-import { CircleMinus, CirclePlus } from 'lucide-react';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { DateRange } from 'react-day-picker';
 import { format } from 'date-fns';
 import SearchButton from '@/components/layout/user/user-header/SearchButton';
-import Icon from '@/components/icon/Icons';
+import Icon from '@/components/icon/Icon';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -18,10 +17,36 @@ import { Separator } from '@/components/ui/separator';
 import { defaultContent } from '@/lib/staticContent';
 import { cn } from '@/lib/utils';
 import { Calendar } from '@/components/ui/calendar';
+import LocationType from '@/types/location';
+import locationService from '@/services/location.service';
 
-const content = defaultContent.commonContent.Header.search;
+const content = defaultContent.commonContent.header.search;
 
+// TODO: Handle form search
 const Search = () => {
+  const [locations, setLocations] = useState<LocationType[] | []>([]);
+  const [guests, setGuests] = useState<{ [key: string]: number }>({
+    adults: 2,
+    children: 0,
+    infants: 0,
+    pets: 0,
+  });
+
+  const onClick = (adjustment: number, id: string) => {
+    setGuests({
+      ...guests,
+      [id]: guests[id] + adjustment,
+    });
+  };
+
+  useEffect(() => {
+    const getLocations = async () => {
+      const res = await locationService.getAllLocation();
+      setLocations(res.content);
+    };
+    getLocations();
+  }, []);
+
   const [date, setDate] = useState<DateRange | undefined>();
   return (
     <div className='flex w-full flex-col items-center'>
@@ -45,7 +70,7 @@ const Search = () => {
         {/* Button search */}
         <div className='ml-4 mr-2 center md:order-2 md:ml-2 md:mr-4'>
           <Button className='size-8 rounded-full bg-transparent p-0 text-black shadow-none hover:bg-primary/70 hover:text-[#6A6A6A] md:size-10 md:bg-primary md:p-5 md:text-white md:hover:text-white'>
-            <Icon name='Search' className='text-2xl' />
+            <Icon name='Search' />
           </Button>
         </div>
 
@@ -75,12 +100,11 @@ const Search = () => {
                       <p className='text-sm'>{content[0].items.where.location.description}</p>
                     </div>
                     <Select>
-                      {/* TODO: Call API */}
                       <SelectTrigger className='w-full rounded-xl'>
                         <SelectValue placeholder='Choose a location' />
                       </SelectTrigger>
                       <SelectContent>
-                        {content[0].items.where.location.items.map((location) => (
+                        {locations.map((location) => (
                           <SelectItem key={location.id} value={`${location.id}`}>
                             {`${location.tenViTri} ${location.tinhThanh}, ${location.tinhThanh}`}
                           </SelectItem>
@@ -181,17 +205,27 @@ const Search = () => {
                         </Label>
 
                         <div className='flex flex-row items-center justify-between'>
-                          {/* TODO: Add function up/down and block if value < 1 */}
-                          <Button variant='outline' className='size-6 rounded-full border-none p-0' type='button'>
-                            <CircleMinus className='size-full' />
+                          <Button
+                            variant='outline'
+                            className='size-6 rounded-full p-0'
+                            type='button'
+                            onClick={() => onClick(-1, opt.id)}
+                            disabled={(opt.id === 'adults' && guests['adults'] <= 2) || guests[opt.id] <= 0}
+                          >
+                            <Icon size='18' name='Minus' />
                           </Button>
 
-                          <Input id={opt.id} defaultValue={opt.defaultValue} className='hidden' />
+                          <Input id={opt.id} defaultValue={guests[opt.id]} className='hidden' />
 
-                          <span className='mx-4 text-center'>{opt.defaultValue}</span>
+                          <span className='mx-4 text-center'>{guests[opt.id]}</span>
 
-                          <Button variant='outline' className='size-6 rounded-full border-none p-0' type='button'>
-                            <CirclePlus className='size-full' />
+                          <Button
+                            variant='outline'
+                            className='size-6 rounded-full p-0'
+                            type='button'
+                            onClick={() => onClick(1, opt.id)}
+                          >
+                            <Icon size='18' name='Plus' />
                           </Button>
                         </div>
                       </div>

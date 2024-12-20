@@ -10,7 +10,7 @@ const ROUTES = {
     REGISTER: '/register',
   },
   USER: {
-    DASHBOARD: '/users/show/',
+    DASHBOARD: '/users/show',
     PROFILE: '/users/show/profile-info',
     RESERVATION_HISTORY: '/users/show/reservation_history',
     ACCOUNT_SETTINGS: '/users/account-settings',
@@ -25,6 +25,7 @@ const ROUTES = {
   },
   ROOM: {
     DETAIL: (roomId: string | number) => `/rooms/${roomId}`,
+    LOCATION: (locationId: string | number) => `/rooms/location?locationId=${locationId}`,
   },
   NOT_FOUND: '/not-found',
 } as const;

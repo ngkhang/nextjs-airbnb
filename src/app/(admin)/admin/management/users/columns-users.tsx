@@ -16,7 +16,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-export const defaultColumnsUser: ColumnDef<User>[] = [
+export const columns: ColumnDef<User>[] = [
   {
     accessorKey: 'id',
     header: ({ column }) => <DataTableColumnHeader column={column} title='ID' iconName='ArrowUpDown' />,
@@ -80,12 +80,14 @@ export const defaultColumnsUser: ColumnDef<User>[] = [
             <Icon name='Ellipsis' size={20} />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className=''>
+        <DropdownMenuContent>
+          {/* TODO: handle modal  */}
           <DropdownMenuGroup>
-            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem className='cursor-pointer'>View</DropdownMenuItem>
+            <DropdownMenuItem className='cursor-pointer'>Edit</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Delete</DropdownMenuItem>
+          <DropdownMenuItem className='cursor-pointer'>Delete</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     ),
