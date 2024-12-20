@@ -1,19 +1,19 @@
 'use client';
 
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
 import CardRoom from '@/components/custom/CardRoom';
 import locationService from '@/services/location.service';
 import roomService from '@/services/room.service';
 import LocationType from '@/types/location';
 import RoomType from '@/types/room.type';
 
-export default function LocationPage() {
-  const [rooms, setRooms] = useState<RoomType[] | []>([]);
-  const [locations, setLocations] = useState<LocationType[] | []>([]);
+function LocationPageContent() {
   const searchParams = useSearchParams();
   const locationId = searchParams.get('locationId');
-  console.log('🚀 ~ LocationPage ~ locationId:', locationId);
+
+  const [rooms, setRooms] = useState<RoomType[] | []>([]);
+  const [locations, setLocations] = useState<LocationType[] | []>([]);
 
   useEffect(() => {
     const getData = async () => {
@@ -60,5 +60,13 @@ export default function LocationPage() {
         ></iframe>
       </div>
     </div>
+  );
+}
+
+export default function LocationPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LocationPageContent />
+    </Suspense>
   );
 }
