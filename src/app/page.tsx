@@ -66,6 +66,7 @@ export default async function Home() {
           <div className='hidden justify-end space-x-4 py-2 text-sm font-medium md:col-span-3 md:flex lg:col-span-2'>
             <Link href='/' className='flex items-center space-x-2 rounded-2xl border px-4 py-0'>
               <Icon name='SlidersHorizontal' />
+              <Icon name='SlidersHorizontal' />
               <span>Filter</span>
             </Link>
 
@@ -148,6 +149,36 @@ export default async function Home() {
         </div>
 
         <div className='grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-5 xl:grid-cols-6'>
+          {locations.content &&
+            locations.content.map((item) => (
+              <Link key={item.id} href={ROUTES.ROOM.LOCATION(item.id)}>
+                <Card className='grid h-full w-full grid-cols-5 justify-items-start gap-2 border-none shadow-none'>
+                  <CardHeader className='col-span-2 col-start-1 overflow-hidden rounded-2xl p-0'>
+                    {isUrl(item.hinhAnh) ? (
+                      <Image
+                        loading='lazy'
+                        width={50}
+                        height={50}
+                        src={item.hinhAnh}
+                        alt={item.tenViTri}
+                        className='aspect-square size-full rounded-2xl hover:scale-110'
+                        quality={75}
+                      />
+                    ) : (
+                      <div className='aspect-square size-full rounded-2xl bg-[#EEEEEE] center'>
+                        <Icon name='ImageOff' size='30' />
+                      </div>
+                    )}
+                  </CardHeader>
+                  <CardContent className='col-span-3 col-start-3 p-0 center'>
+                    <div className='text-sm'>
+                      <p className='font-semibold'>{item.tenViTri}</p>
+                      <p className='text-xs text-[#6A6A6A]'>{`${item.tinhThanh}, ${item.quocGia}`}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
           {locations.content &&
             locations.content.map((item) => (
               <Link key={item.id} href={ROUTES.ROOM.LOCATION(item.id)}>

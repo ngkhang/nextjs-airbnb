@@ -42,6 +42,7 @@ interface GuestCount {
   pets: number;
 }
 
+// TODO: Handle form search
 const Search = () => {
   const router = useRouter();
   const [locations, setLocations] = useState<LocationType[] | []>([]);
@@ -68,7 +69,7 @@ const Search = () => {
   const handleSearch = () => {
     const { dateRange, location, guests } = searchState;
     const query = dateRange ? `checkIn=${dateRange.from}&checkOut=${dateRange.to}&guests=${guests}` : '';
-    router.push(ROUTES.ROOM.LOCATION(location, query));
+    router.push(ROUTES.ROOM.LOCATION(location));
   };
 
   const onClick = (adjustment: number, id: keyof GuestCount) => {

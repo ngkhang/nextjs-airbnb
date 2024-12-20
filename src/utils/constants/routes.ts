@@ -25,7 +25,7 @@ const ROUTES = {
   },
   ROOM: {
     DETAIL: (roomId: string | number) => `/rooms/${roomId}`,
-    LOCATION: (locationId: string | number, query?: string) => `/rooms/location?locationId=${locationId}?${query}`,
+    LOCATION: (locationId: string | number) => `/rooms/location?locationId=${locationId}`,
   },
   NOT_FOUND: '/not-found',
 } as const;

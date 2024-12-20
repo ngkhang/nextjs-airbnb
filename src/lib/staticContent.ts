@@ -6,6 +6,7 @@ import en_auth from '../locales/en/authPage.json';
 import en_home from '../locales/en/homePage.json';
 import en_user from '../locales/en/usersPage.json';
 import en_admin from '../locales/en/adminPage.json';
+import en_room from '../locales/en/roomsPage.json';
 
 const SUPPORTED_LOCALES = ['en'] as const;
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
@@ -19,6 +20,7 @@ interface StaticContent {
   homeContent: typeof en_home;
   userContent: typeof en_user;
   adminContent: typeof en_admin;
+  roomContent: typeof en_room;
 }
 
 const staticContent: Record<SupportedLocale, StaticContent> = {
@@ -31,6 +33,7 @@ const staticContent: Record<SupportedLocale, StaticContent> = {
     homeContent: en_home,
     userContent: en_user,
     adminContent: en_admin,
+    roomContent: en_room,
   },
 };
 
