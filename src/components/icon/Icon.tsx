@@ -54,7 +54,12 @@ import {
   Ellipsis,
   ImageOff,
   CalendarIcon,
+  Waves,
+  Wifi,
+  AirVent,
+  ChevronDown,
 } from 'lucide-react';
+
 import type { LucideProps } from 'lucide-react';
 
 const IconsRegistry = {
@@ -113,6 +118,10 @@ const IconsRegistry = {
   Ellipsis,
   ImageOff,
   CalendarIcon,
+  Waves,
+  Wifi,
+  AirVent,
+  ChevronDown,
 } as const;
 
 export type IconName = keyof typeof IconsRegistry;

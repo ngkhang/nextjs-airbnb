@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import isUrl from 'is-url';
 import { defaultContent } from '@/lib/staticContent';
-import { cn, formatCurrency } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import FooterDefault from '@/components/default/Footer';
 import { Separator } from '@/components/ui/separator';
@@ -13,20 +13,17 @@ import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import roomService from '@/services/room.service';
 import locationService from '@/services/location.service';
-import { keyLocation } from '@/utils/constants/common';
 // FIXME: Icon component
-import Icons from '@/components/icon/Icons';
 import Icon from '@/components/icon/Icon';
 import ROUTES from '@/utils/constants/routes';
+import CardRoom from '@/components/custom/CardRoom';
 const { inspiration, explore } = defaultContent.homeContent;
-const { categories, infoRooms } = defaultContent.commonContent;
+const { categories } = defaultContent.commonContent;
 
 export default async function Home() {
   const rooms = await roomService.getAllRooms();
 
   const locations = await locationService.getAllLocation();
-
-  const locationInfo = (id: number) => locations.content.filter((item) => item.id === id);
 
   return (
     <div className=''>
@@ -83,60 +80,7 @@ export default async function Home() {
       <section className='container mb-8 mt-6'>
         <div className='grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-10 xl:grid-cols-4 xl:gap-8 3xl:grid-cols-5 4xl:grid-cols-6'>
           {rooms.content &&
-            rooms.content.map((item) => (
-              <Card key={item.id} className={cn('w-full rounded-none border-none p-0 shadow-none')}>
-                {/* Card Header */}
-                <Link href={ROUTES.ROOM.DETAIL(item.id)} className='block overflow-hidden rounded-2xl'>
-                  <CardHeader
-                    className='relative mb-3 size-56 w-full rounded-2xl bg-left-bottom bg-no-repeat p-0 duration-300 hover:scale-125 hover:opacity-80 lg:size-64 lg:w-full'
-                    style={{ backgroundImage: `url(${item.hinhAnh})` }}
-                  >
-                    <Icon name='Heart' color='#fff' className='absolute right-3 top-3 fill-black/50 hover:scale-125' />
-                  </CardHeader>
-                </Link>
-
-                {/* Card content */}
-                <CardContent className='p-0'>
-                  <div className='mb-2 flex items-center justify-between text-[#6A6A6A]'>
-                    <Link
-                      href={ROUTES.ROOM.DETAIL(item.id)}
-                      className='mr-2 truncate font-semibold capitalize text-[#222222]'
-                    >
-                      {item.tenPhong}
-                    </Link>
-                    <div className='flex items-center'>
-                      <Icon name='Star' size='20' fill='#000' className='mr-1' />
-                      <span>4.7</span>
-                    </div>
-                  </div>
-
-                  <div className='mb-1 flex items-stretch space-x-2 text-sm text-[#6A6A6A]'>
-                    {keyLocation.map((location, index) => (
-                      <div key={index} className='flex h-5 items-center space-x-2 text-sm'>
-                        {locationInfo(item.maViTri)[0] && <span>{locationInfo(item.maViTri)[0][location]}</span>}
-                        {keyLocation.length - 1 !== index && (
-                          <Separator orientation='vertical' className='bg-[#6A6A6A]' />
-                        )}
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className='mb-2 grid grid-cols-2 grid-rows-2 gap-1 text-sm text-[#6A6A6A]'>
-                    {infoRooms.map((info) => (
-                      <span key={info.key}>{`· ${item[info.id as keyof typeof item]} ${info.title}`}</span>
-                    ))}
-                  </div>
-                  <p className='mb-2 hidden truncate text-sm'>{item.moTa}</p>
-
-                  <div className='flex items-center text-sm'>
-                    <Icons className='size-5' name='Vnd' />
-                    {/* <Vnd /> */}
-                    <span className='mr-1 text-lg font-semibold'>{formatCurrency(+item.giaTien)}</span>
-                    <span>đêm</span>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+            rooms.content.map((room) => <CardRoom key={room.id} locations={locations.content} room={room} />)}
         </div>
       </section>
 
